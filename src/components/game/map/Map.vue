@@ -1,5 +1,16 @@
 <template>
     <div class="room-container">
+        <div class="adminBox" v-if="isAdmin()">
+            Unlock room:
+            <a href="#" @click.prevent="adminUnlock(1)" :class="adminGetClassFor(1)">1</a>
+            <a href="#" @click.prevent="adminUnlock(2)" :class="adminGetClassFor(2)">2</a>
+            <a href="#" @click.prevent="adminUnlock(3)" :class="adminGetClassFor(3)">3</a>
+            <a href="#" @click.prevent="adminUnlock(4)" :class="adminGetClassFor(4)">4</a>
+            <a href="#" @click.prevent="adminUnlock(5)" :class="adminGetClassFor(5)">5</a>
+            <a href="#" @click.prevent="adminUnlock(6)" :class="adminGetClassFor(6)">6</a>
+            <a href="#" @click.prevent="adminUnlock(7)" :class="adminGetClassFor(7)">7</a>
+            <a href="#" @click.prevent="adminUnlock(8)" :class="adminGetClassFor(8)">8</a>
+        </div>
         <div class="separator"></div>
         <div class="separator"></div>
         <div class="separator"></div>
@@ -17,11 +28,11 @@
         <div class="separator"></div>
 
         <div class="separator"></div>
-        <div class="separator" :class="getClassForSeparator('vertical', 1,4)"></div>
+        <div class="separator"></div>
         <div class="separator"></div>
         <div class="separator" :class="getClassForSeparator('vertical', 2,5)"></div>
         <div class="separator"></div>
-        <div class="separator" :class="getClassForSeparator('vertical', 3,6)"></div>
+        <div class="separator"></div>
         <div class="separator"></div>
 
         <div class="separator"></div>
@@ -57,6 +68,8 @@
     </div>
 </template>
 <script>
+import { isAdmin } from '../../../lib/is-admin';
+
 export default {
   name: 'Map',
   data() {
@@ -68,6 +81,22 @@ export default {
     };
   },
   methods: {
+    isAdmin() {
+      return isAdmin();
+    },
+    adminUnlock(room) {
+      if (this.isUnlocked(room)) {
+        this.mapState.unlockedRooms.splice(this.mapState.unlockedRooms.indexOf(room),1);
+      } else {
+        this.mapState.unlockedRooms.push(room);
+      }
+    },
+    adminGetClassFor(room) {
+      return {
+        'adminUnlocked': this.isUnlocked(room),
+        'adminLocked': !this.isUnlocked(room),
+      };
+    },
     changeRoom(room) {
       if (this.isUnlocked(room)) {
         this.activeRoom = room;
@@ -92,6 +121,23 @@ export default {
 }
 </script>
 <style scoped>
+    .adminBox {
+        position:absolute;
+        font-size: 2em;
+        font-family: Helvetica;
+        color: #efefef;
+    }
+    .adminBox a {
+        color: #fff;
+        display:inline-block;
+        padding-right: 1vw;
+    }
+    .adminBox a.adminUnlocked {
+        color: rgb(212, 1, 47);
+    }
+    .adminBox a.adminLocked {
+        color: #efefef;
+    }
     .room-container {
         display: grid;
         grid-template-columns: 10% 20% 10% 20% 10% 20% 10%;
