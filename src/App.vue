@@ -9,6 +9,7 @@
 import Welcome from './components/welcome/Welcome.vue'
 import Game from './components/game/Game';
 import './assets/common/normalize.css'
+import './assets/common/common.css'
 
 const STATES = {
   WELCOME: 'WELCOME',
@@ -23,7 +24,7 @@ export default {
   },
   data() {
     return {
-      state: STATES.WELCOME,
+      state: STATES.GAME,
     }
   },
   methods: {
