@@ -9,42 +9,42 @@
         <div class="separator"></div>
 
         <div class="separator"></div>
-        <div class="room box room1" :class="getClassIfActive(1)" @click="changeRoom(1)"></div>
-        <div class="separator horizontal"></div>
-        <div class="room box room2" :class="getClassIfActive(2)" @click="changeRoom(2)"></div>
-        <div class="separator horizontal"></div>
-        <div class="room box room3" :class="getClassIfActive(3)" @click="changeRoom(3)"></div>
+        <div class="room box room1" :class="getClassForRoom(1)" @click="changeRoom(1)"></div>
+        <div class="separator" :class="getClassForSeparator('horizontal', 1,2)"></div>
+        <div class="room box room2" :class="getClassForRoom(2)" @click="changeRoom(2)"></div>
+        <div class="separator" :class="getClassForSeparator('horizontal', 2,3)"></div>
+        <div class="room box room3" :class="getClassForRoom(3)" @click="changeRoom(3)"></div>
         <div class="separator"></div>
 
         <div class="separator"></div>
-        <div class="separator vertical"></div>
+        <div class="separator" :class="getClassForSeparator('vertical', 1,4)"></div>
         <div class="separator"></div>
-        <div class="separator vertical"></div>
+        <div class="separator" :class="getClassForSeparator('vertical', 2,5)"></div>
         <div class="separator"></div>
-        <div class="separator vertical"></div>
-        <div class="separator"></div>
-
-        <div class="separator"></div>
-        <div class="room box room4" :class="getClassIfActive(4)" @click="changeRoom(4)"></div>
-        <div class="separator horizontal"></div>
-        <div class="room box room5" :class="getClassIfActive(5)" @click="changeRoom(5)"></div>
-        <div class="separator horizontal"></div>
-        <div class="room box room6" :class="getClassIfActive(6)" @click="changeRoom(6)"></div>
+        <div class="separator" :class="getClassForSeparator('vertical', 3,6)"></div>
         <div class="separator"></div>
 
         <div class="separator"></div>
-        <div class="separator vertical"></div>
+        <div class="room box room4" :class="getClassForRoom(4)" @click="changeRoom(4)"></div>
+        <div class="separator" :class="getClassForSeparator('horizontal', 4,5)"></div>
+        <div class="room box room5" :class="getClassForRoom(5)" @click="changeRoom(5)"></div>
+        <div class="separator" :class="getClassForSeparator('horizontal', 5,6)"></div>
+        <div class="room box room6" :class="getClassForRoom(6)" @click="changeRoom(6)"></div>
+        <div class="separator"></div>
+
+        <div class="separator"></div>
+        <div class="separator" :class="getClassForSeparator('vertical', 4,7)"></div>
         <div class="separator"></div>
         <div class="separator"></div>
         <div class="separator"></div>
-        <div class="separator vertical"></div>
+        <div class="separator" :class="getClassForSeparator('vertical', 6,8)"></div>
         <div class="separator"></div>
 
 
         <div class="separator"></div>
-        <div class="room box room7" :class="getClassIfActive(7)" @click="changeRoom(7)"></div>
+        <div class="room box room7" :class="getClassForRoom(7)" @click="changeRoom(7)"></div>
 
-        <div class="room box room8" :class="getClassIfActive(8)" @click="changeRoom(8)"></div>
+        <div class="room box room8" :class="getClassForRoom(8)" @click="changeRoom(8)"></div>
         <div class="separator"></div>
 
         <div class="separator"></div>
@@ -62,14 +62,31 @@ export default {
   data() {
     return {
       activeRoom: 5,
+      mapState: {
+        unlockedRooms: [2, 5]
+      }
     };
   },
   methods: {
     changeRoom(room) {
-      this.activeRoom = room;
+      if (this.isUnlocked(room)) {
+        this.activeRoom = room;
+      }
     },
-    getClassIfActive(room) {
-      return (this.activeRoom === room)?'active':'';
+    getClassForRoom(room) {
+      return {
+        'active': (this.activeRoom === room),
+        'unlocked': this.isUnlocked(room),
+        'locked': !this.isUnlocked(room)
+      };
+    },
+    getClassForSeparator(classname, roomA, roomB) {
+      return {
+        [classname]: this.isUnlocked(roomA) && this.isUnlocked(roomB)
+      };
+    },
+    isUnlocked(room) {
+      return this.mapState.unlockedRooms.indexOf(room) >= 0;
     }
   }
 }
@@ -81,11 +98,15 @@ export default {
         grid-template-rows: 10% 20% 10% 20% 10% 20% 10%;
     }
 
-    .room {
+    .room.unlocked {
         border: solid 0.5vh #fff;
     }
 
-    .active {
+    .room.locked {
+        border: solid 0.5vh #000;
+    }
+
+    .room.active {
         border: solid 1vh rgb(212, 1, 47);
     }
 
