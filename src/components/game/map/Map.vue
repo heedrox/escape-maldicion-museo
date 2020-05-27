@@ -125,6 +125,8 @@ export default {
         position:absolute;
         font-size: 2em;
         font-family: Helvetica;
+        padding-top: 0.5vh;
+        padding-left: 1vw;
         color: #efefef;
     }
     .adminBox a {
@@ -133,10 +135,10 @@ export default {
         padding-right: 1vw;
     }
     .adminBox a.adminUnlocked {
-        color: rgb(212, 1, 47);
+        color: #fff;
     }
     .adminBox a.adminLocked {
-        color: #efefef;
+        color: #333;
     }
     .room-container {
         display: grid;
