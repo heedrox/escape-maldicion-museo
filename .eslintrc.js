@@ -22,6 +22,7 @@ module.exports = {
     "vue/max-attributes-per-line": 0,
     "vue/html-self-closing": 0,
     "vue/component-tags-order": 0,
+    "vue/no-v-html": 0,
   },
   "plugins": ["jest"]
 };

@@ -2,7 +2,7 @@
   <div>
     <Map class="left-top box"></Map>
     <div class="left-bottom box"></div>
-    <div class="right box"></div>
+    <Room class="right box"></Room>
   </div>
 </template>
 <style scoped>
@@ -23,7 +23,7 @@
         height: 43vh;
     }
     .right {
-        position: absolute;
+        position: fixed;
         top: 5vh;
         left: 38vw;
         background-color: #000;
@@ -33,11 +33,13 @@
 </style>
 <script>
 import Map from './map/Map';
+import Room from './room/Room';
 
 export default {
   name: 'Game',
   components: {
-    Map
+    Map,
+    Room
   }
 }
 </script>
