@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Welcome v-if="state === 'WELCOME'" @start="doPlay()"/>
+    <Welcome v-if="state === 'WELCOME'" @start="doPlay()" />
     <Game v-if="state === 'GAME'"></Game>
   </div>
 </template>

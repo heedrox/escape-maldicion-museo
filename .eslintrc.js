@@ -5,7 +5,7 @@ module.exports = {
     "jest/globals": true
   },
   extends: [
-    'airbnb-base',
+    'plugin:vue/vue3-recommended',
     "plugin:jest/recommended",
     "plugin:jest/style"
   ],
@@ -19,6 +19,9 @@ module.exports = {
   },
   rules: {
     "max-len": ["error", { "code": 120 }],
+    "vue/max-attributes-per-line": 0,
+    "vue/html-self-closing": 0,
+    "vue/component-tags-order": 0,
   },
   "plugins": ["jest"]
 };

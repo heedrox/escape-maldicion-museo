@@ -1,12 +1,14 @@
 <template>
-    <div class="pergamino">
-        <div class="container">
-            <div class="close" @click="$emit('start')">X</div>
-            <scrolling-text>
-                <slot></slot>
-            </scrolling-text>
-        </div>
+  <div class="pergamino">
+    <div class="container">
+      <div class="close" @click="$emit('start')">
+        X
+      </div>
+      <scrolling-text>
+        <slot></slot>
+      </scrolling-text>
     </div>
+  </div>
 </template>
 <style scoped>
     .pergamino {
@@ -23,10 +25,11 @@
         padding: 10%;
         margin: auto;
     }
+
     .close {
         text-align: right;
         padding-right: 25px;
-        font-family: "Arial Black",serif;
+        font-family: "Arial Black", serif;
         font-weight: bolder;
         color: darkred;
         text-decoration: underline;
@@ -35,6 +38,7 @@
 </style>
 <script>
 import ScrollingText from './ScrollingText';
+
 export default {
   name: 'WelcomeScroll',
   components: {

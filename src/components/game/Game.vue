@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <Map class="left-top box"></Map>
-        <div class="left-bottom box"></div>
-        <div class="right box"></div>
-    </div>
+  <div>
+    <Map class="left-top box"></Map>
+    <div class="left-bottom box"></div>
+    <div class="right box"></div>
+  </div>
 </template>
 <style scoped>
     .left-top {

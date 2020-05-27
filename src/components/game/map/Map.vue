@@ -1,71 +1,71 @@
 <template>
-    <div class="room-container">
-        <div class="adminBox" v-if="isAdmin()">
-            Unlock room:
-            <a href="#" @click.prevent="adminUnlock(1)" :class="adminGetClassFor(1)">1</a>
-            <a href="#" @click.prevent="adminUnlock(2)" :class="adminGetClassFor(2)">2</a>
-            <a href="#" @click.prevent="adminUnlock(3)" :class="adminGetClassFor(3)">3</a>
-            <a href="#" @click.prevent="adminUnlock(4)" :class="adminGetClassFor(4)">4</a>
-            <a href="#" @click.prevent="adminUnlock(5)" :class="adminGetClassFor(5)">5</a>
-            <a href="#" @click.prevent="adminUnlock(6)" :class="adminGetClassFor(6)">6</a>
-            <a href="#" @click.prevent="adminUnlock(7)" :class="adminGetClassFor(7)">7</a>
-            <a href="#" @click.prevent="adminUnlock(8)" :class="adminGetClassFor(8)">8</a>
-        </div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-
-        <div class="separator"></div>
-        <div class="room box room1" :class="getClassForRoom(1)" @click="changeRoom(1)"></div>
-        <div class="separator" :class="getClassForSeparator('horizontal', 1,2)"></div>
-        <div class="room box room2" :class="getClassForRoom(2)" @click="changeRoom(2)"></div>
-        <div class="separator" :class="getClassForSeparator('horizontal', 2,3)"></div>
-        <div class="room box room3" :class="getClassForRoom(3)" @click="changeRoom(3)"></div>
-        <div class="separator"></div>
-
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator" :class="getClassForSeparator('vertical', 2,5)"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-
-        <div class="separator"></div>
-        <div class="room box room4" :class="getClassForRoom(4)" @click="changeRoom(4)"></div>
-        <div class="separator" :class="getClassForSeparator('horizontal', 4,5)"></div>
-        <div class="room box room5" :class="getClassForRoom(5)" @click="changeRoom(5)"></div>
-        <div class="separator" :class="getClassForSeparator('horizontal', 5,6)"></div>
-        <div class="room box room6" :class="getClassForRoom(6)" @click="changeRoom(6)"></div>
-        <div class="separator"></div>
-
-        <div class="separator"></div>
-        <div class="separator" :class="getClassForSeparator('vertical', 4,7)"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator" :class="getClassForSeparator('vertical', 6,8)"></div>
-        <div class="separator"></div>
-
-
-        <div class="separator"></div>
-        <div class="room box room7" :class="getClassForRoom(7)" @click="changeRoom(7)"></div>
-
-        <div class="room box room8" :class="getClassForRoom(8)" @click="changeRoom(8)"></div>
-        <div class="separator"></div>
-
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
-        <div class="separator"></div>
+  <div class="room-container">
+    <div v-if="isAdmin()" class="adminBox">
+      Unlock room:
+      <a href="#" :class="adminGetClassFor(1)" @click.prevent="adminUnlock(1)">1</a>
+      <a href="#" :class="adminGetClassFor(2)" @click.prevent="adminUnlock(2)">2</a>
+      <a href="#" :class="adminGetClassFor(3)" @click.prevent="adminUnlock(3)">3</a>
+      <a href="#" :class="adminGetClassFor(4)" @click.prevent="adminUnlock(4)">4</a>
+      <a href="#" :class="adminGetClassFor(5)" @click.prevent="adminUnlock(5)">5</a>
+      <a href="#" :class="adminGetClassFor(6)" @click.prevent="adminUnlock(6)">6</a>
+      <a href="#" :class="adminGetClassFor(7)" @click.prevent="adminUnlock(7)">7</a>
+      <a href="#" :class="adminGetClassFor(8)" @click.prevent="adminUnlock(8)">8</a>
     </div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+
+    <div class="separator"></div>
+    <div class="room box room1" :class="getClassForRoom(1)" @click="changeRoom(1)"></div>
+    <div class="separator" :class="getClassForSeparator('horizontal', 1,2)"></div>
+    <div class="room box room2" :class="getClassForRoom(2)" @click="changeRoom(2)"></div>
+    <div class="separator" :class="getClassForSeparator('horizontal', 2,3)"></div>
+    <div class="room box room3" :class="getClassForRoom(3)" @click="changeRoom(3)"></div>
+    <div class="separator"></div>
+
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator" :class="getClassForSeparator('vertical', 2,5)"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+
+    <div class="separator"></div>
+    <div class="room box room4" :class="getClassForRoom(4)" @click="changeRoom(4)"></div>
+    <div class="separator" :class="getClassForSeparator('horizontal', 4,5)"></div>
+    <div class="room box room5" :class="getClassForRoom(5)" @click="changeRoom(5)"></div>
+    <div class="separator" :class="getClassForSeparator('horizontal', 5,6)"></div>
+    <div class="room box room6" :class="getClassForRoom(6)" @click="changeRoom(6)"></div>
+    <div class="separator"></div>
+
+    <div class="separator"></div>
+    <div class="separator" :class="getClassForSeparator('vertical', 4,7)"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator" :class="getClassForSeparator('vertical', 6,8)"></div>
+    <div class="separator"></div>
+
+
+    <div class="separator"></div>
+    <div class="room box room7" :class="getClassForRoom(7)" @click="changeRoom(7)"></div>
+
+    <div class="room box room8" :class="getClassForRoom(8)" @click="changeRoom(8)"></div>
+    <div class="separator"></div>
+
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+  </div>
 </template>
 <script>
 import { isAdmin } from '../../../lib/is-admin';
@@ -76,7 +76,7 @@ export default {
     return {
       activeRoom: 5,
       mapState: {
-        unlockedRooms: [2, 5]
+        unlockedRooms: [2, 4, 5]
       }
     };
   },

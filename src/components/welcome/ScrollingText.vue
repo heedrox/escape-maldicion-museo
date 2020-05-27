@@ -1,7 +1,7 @@
 <template>
-    <p v-html="content" id="scrolltext">
-        <vnode-to-html :vnode="$slots.default" @html="setContentFrom($event)"/>
-    </p>
+  <p id="scrolltext" v-html="content">
+    <VNodeToHtml :vnode="$slots.default" @html="setContentFrom($event)" />
+  </p>
 </template>
 <style scoped>
     p {
@@ -29,23 +29,16 @@
     }
 </style>
 <script>
-import Vue from 'vue';
+import VNodeToHtml from './VNodeToHtml';
 
 const END_MARKER = '#';
 const BR_MARKER = '·';
 
-Vue.component('vnode-to-html', {
-  props: ['vnode'],
-  render(createElement) {
-    return createElement('template', [this.vnode]);
-  },
-  mounted() {
-    this.$emit('html', [...this.$el.childNodes].map(n => n.outerHTML || n.textContent).join('\n'));
-  }
-});
-
 export default {
-  name: 'scrolling-text',
+  name: 'ScrollingText',
+  components: {
+    VNodeToHtml
+  },
   data() {
     return {
       fullContent: '',

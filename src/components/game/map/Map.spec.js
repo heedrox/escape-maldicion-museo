@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils';
 import Map from './Map.vue';
 
 const ROOM_NUMBER = 1;
