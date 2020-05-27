@@ -1,15 +1,23 @@
-import { createLocalVue } from '@vue/test-utils'
 import { mount } from '@vue/test-utils'
 import Map from './Map.vue';
 
-createLocalVue();
+const ROOM_NUMBER = 1;
 
 describe('Admin Map', () => {
-  test('Unlocks admin', () => {
+  test('Unlocks room', () => {
     const wrapper = mount(Map);
 
-    wrapper.vm.adminUnlock(1);
+    wrapper.vm.adminUnlock(ROOM_NUMBER);
 
-    expect(wrapper.vm.mapState.unlockedRooms.indexOf(1)).toBeGreaterThan(0);
+    expect(wrapper.vm.mapState.unlockedRooms.indexOf(ROOM_NUMBER)).toBeGreaterThan(0);
+  });
+
+  test('Locks room again if unlocked', () => {
+    const wrapper = mount(Map);
+    wrapper.vm.mapState.unlockedRooms.push(ROOM_NUMBER);
+
+    wrapper.vm.adminUnlock(ROOM_NUMBER);
+
+    expect(wrapper.vm.mapState.unlockedRooms.indexOf(ROOM_NUMBER)).toEqual(-1);
   });
 });
