@@ -2,14 +2,13 @@
   <div>
     <div class="all-items">
       <div class="items-container">
-        <img v-for="item in unlockedItemsInRoom"
-             :key="item.image"
-             src="../../../assets/common/round-items.png"
-             class="item"
-             :style="{ backgroundImage: 'url(' + getUrl(item) + ')' }"
-             @click="showImage(item)"
+        <RoomItem v-for="item in itemsInRoom"
+                  :key="item.image"
+                  :item="item"
+                  :is-unlocked="isUnlocked(item.id)"
+                  @selectImage="selectImage($event)"
+                  @toggleLock="adminToggleLock(item.id)"
         />
-
       </div>
     </div>
     <SelectedItem v-if="selectedItem"
@@ -41,22 +40,10 @@
     grid-column-gap: 2vw;
     grid-row-gap: 5vh;
   }
-
-  .item {
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .item:before {
-    content: "";
-    display: block;
-    padding-top: 100%;
-  }
 </style>
 <script>
-import { isAdmin } from '../../../lib/is-admin';
 import SelectedItem from './SelectedItem';
+import RoomItem from './RoomItem';
 
 const anItem = (id, roomId, image) => ({ id, roomId, image });
 
@@ -64,6 +51,7 @@ export default {
   name: 'Room',
   components: {
     SelectedItem,
+    RoomItem,
   },
   props: {
     activeRoom: {
@@ -100,32 +88,27 @@ export default {
   computed: {
     itemsInRoom() {
       return this.items.filter(item => (item.roomId === this.activeRoom));
-    },
-    unlockedItemsInRoom() {
-      return this.items.filter(item => this.isUnlocked(item.id) && (item.roomId === this.activeRoom));
     }
   },
   methods: {
-    isAdmin() {
-      return isAdmin();
-    },
-    adminGetClassFor(item) {
-
-    },
-    adminUnlock(item) {
-
+    adminToggleLock(itemId) {
+      if (this.isUnlocked(itemId)) {
+        this.roomState.unlockedItems.splice(this.roomState.unlockedItems.indexOf(itemId), 1);
+      } else {
+        this.roomState.unlockedItems.push(itemId);
+      }
     },
     getUrl(item) {
       return `${this.publicPath}game/${item.roomId}/${item.image}`
     },
-    showImage(item) {
+    selectImage(item) {
       this.selectedItem = item;
     },
     hideImage() {
       this.selectedItem = null;
     },
-    isUnlocked(item) {
-      return this.roomState.unlockedItems.indexOf(item) >= 0;
+    isUnlocked(itemId) {
+      return this.roomState.unlockedItems.indexOf(itemId) >= 0;
     }
   }
 }
