@@ -11,11 +11,11 @@
         />
       </div>
     </div>
-    <div v-if="selectedItem" class="zoomed-mask" @click="hideImage()">
-      <div class="zoomed-item box">
-        <span class="helper"></span><img :src="getUrl(selectedItem)">
-      </div>
-    </div>
+    <SelectedItem v-if="selectedItem"
+                  :url="getUrl(selectedItem)"
+                  selected-item="selectedItem"
+                  @hide="hideImage()"
+    />
   </div>
 </template>
 <style>
@@ -53,41 +53,18 @@
     display: block;
     padding-top: 100%;
   }
-  .zoomed-mask {
-    position:fixed;
-    top: 0;
-    left:0;
-    height:100vh;
-    width:100vw;
-    background: rgba(165,147,167,0.5);
-  }
-  .zoomed-item {
-    position: fixed;
-    top: 10vh;
-    left: 10vw;
-    height:80vh;
-    width:80vw;
-    background:black;
-    white-space: nowrap; /* This is required unless you put the helper span closely near the img */
-    text-align: center;
-  }
-  .zoomed-item img {
-    max-height:80vh;
-    width:auto;
-    vertical-align:middle;
-  }
-  .helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align:middle;
-  }
 </style>
 <script>
+
+import SelectedItem from './SelectedItem';
 
 const anItem = (roomId, image) => ({ roomId, image });
 
 export default {
   name: 'Room',
+  components: {
+    SelectedItem,
+  },
   data() {
     return {
       publicPath: process.env.BASE_URL,
