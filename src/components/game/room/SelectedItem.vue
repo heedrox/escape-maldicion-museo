@@ -1,6 +1,8 @@
 <template>
   <div class="zoomed-mask" @click="$emit('hide')">
-    <div class="close" @click="$emit('hide')">X</div>
+    <div class="close" @click="$emit('hide')">
+      X
+    </div>
     <div class="zoomed-item box" @click.stop="">
       <span class="helper"></span><img :src="url">
     </div>

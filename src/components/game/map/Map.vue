@@ -72,9 +72,14 @@ import { isAdmin } from '../../../lib/is-admin';
 
 export default {
   name: 'Map',
+  props: {
+    activeRoom: {
+      type: Number,
+      default: 5,
+    }
+  },
   data() {
     return {
-      activeRoom: 5,
       mapState: {
         unlockedRooms: [2, 4, 5]
       }
@@ -86,7 +91,7 @@ export default {
     },
     adminUnlock(room) {
       if (this.isUnlocked(room)) {
-        this.mapState.unlockedRooms.splice(this.mapState.unlockedRooms.indexOf(room),1);
+        this.mapState.unlockedRooms.splice(this.mapState.unlockedRooms.indexOf(room), 1);
       } else {
         this.mapState.unlockedRooms.push(room);
       }
@@ -99,7 +104,7 @@ export default {
     },
     changeRoom(room) {
       if (this.isUnlocked(room)) {
-        this.activeRoom = room;
+        this.$emit('changeRoom', room);
       }
     },
     getClassForRoom(room) {
@@ -121,70 +126,74 @@ export default {
 }
 </script>
 <style scoped>
-    .adminBox {
-        position:absolute;
-        font-size: 2em;
-        font-family: Helvetica;
-        padding-top: 0.5vh;
-        padding-left: 1vw;
-        color: #efefef;
-    }
-    .adminBox a {
-        color: #fff;
-        display:inline-block;
-        padding-right: 1vw;
-    }
-    .adminBox a.adminUnlocked {
-        color: #fff;
-    }
-    .adminBox a.adminLocked {
-        color: #333;
-    }
-    .room-container {
-        display: grid;
-        grid-template-columns: 10% 20% 10% 20% 10% 20% 10%;
-        grid-template-rows: 10% 20% 10% 20% 10% 20% 10%;
-    }
+  .adminBox {
+    position: absolute;
+    font-size: 2em;
+    font-family: Helvetica;
+    padding-top: 0.5vh;
+    padding-left: 1vw;
+    color: #efefef;
+  }
 
-    .room.unlocked {
-        border: solid 0.5vh #fff;
-    }
+  .adminBox a {
+    color: #fff;
+    display: inline-block;
+    padding-right: 1vw;
+  }
 
-    .room.locked {
-        border: solid 0.5vh #000;
-    }
+  .adminBox a.adminUnlocked {
+    color: #fff;
+  }
 
-    .room.active {
-        border: solid 1vh rgb(212, 1, 47);
-    }
+  .adminBox a.adminLocked {
+    color: #333;
+  }
 
-    .room8 {
-        grid-column-start: 6;
-    }
+  .room-container {
+    display: grid;
+    grid-template-columns: 10% 20% 10% 20% 10% 20% 10%;
+    grid-template-rows: 10% 20% 10% 20% 10% 20% 10%;
+  }
 
-    .separator {
-    }
+  .room.unlocked {
+    border: solid 0.5vh #fff;
+  }
 
-    .horizontal:before {
-        content: '';
-        position: relative;
-        display: block;
-        top: 50%;
-        left: 0;
-        border-top: 3px solid white;
-        background: transparent;
-        width: 100%;
-    }
+  .room.locked {
+    border: solid 0.5vh #000;
+  }
 
-    .vertical:before {
-        content: '';
-        position: relative;
-        display: block;
-        top: 0;
-        left: 50%;
-        border-left: 3px solid white;
-        background: transparent;
-        width: 100%;
-        height: 100%;
-    }
+  .room.active {
+    border: solid 1vh rgb(212, 1, 47);
+  }
+
+  .room8 {
+    grid-column-start: 6;
+  }
+
+  .separator {
+  }
+
+  .horizontal:before {
+    content: '';
+    position: relative;
+    display: block;
+    top: 50%;
+    left: 0;
+    border-top: 3px solid white;
+    background: transparent;
+    width: 100%;
+  }
+
+  .vertical:before {
+    content: '';
+    position: relative;
+    display: block;
+    top: 0;
+    left: 50%;
+    border-left: 3px solid white;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+  }
 </style>

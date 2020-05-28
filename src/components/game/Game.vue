@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Map class="left-top box"></Map>
+    <Map class="left-top box" :active-room="activeRoom" @changeRoom="changeRoom($event)"></Map>
     <div class="left-bottom box"></div>
-    <Room class="right box"></Room>
+    <Room class="right box" :active-room="activeRoom"></Room>
   </div>
 </template>
 <style scoped>
@@ -40,6 +40,16 @@ export default {
   components: {
     Map,
     Room
+  },
+  data() {
+    return {
+      activeRoom: 5,
+    }
+  },
+  methods: {
+    changeRoom(room) {
+      this.activeRoom = room;
+    }
   }
 }
 </script>
