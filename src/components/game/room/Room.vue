@@ -13,7 +13,6 @@
     </div>
     <SelectedItem v-if="selectedItem"
                   :url="getUrl(selectedItem)"
-                  selected-item="selectedItem"
                   @hide="hideImage()"
     />
   </div>
