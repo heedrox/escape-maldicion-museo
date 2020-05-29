@@ -66,6 +66,8 @@ export default {
         anItem(203, 2, 'library.jpg'),
         anItem(201, 2, 'book-catalog.jpg'),
         anItem(202, 2, 'book-disney.jpg'),
+        anItem(205, 2, 'door-to-egypt.jpg'),
+        anItem(204, 2, 'lock-to-3.jpg'),
         anItem(401, 4, 'frame-qo.jpg'),
         anItem(402, 4, 'frames-more-generic.jpg'),
         anItem(403, 4, 'frame-generic.jpg'),
@@ -80,7 +82,8 @@ export default {
         anItem(505, 5, 'lock-door-dimension.jpg'),
       ],
       roomState: {
-        unlockedItems: [201, 203, 401, 402, 403, 404, 405, 501, 502, 503, 504, 506]
+        // unlockedItems: [201, 203, 401, 402, 403, 404, 405, 501, 502, 503, 504, 506]
+        unlockedItems: [],
       },
       selectedItem: null
     }
