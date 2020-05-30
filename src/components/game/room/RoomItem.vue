@@ -4,6 +4,9 @@
          :style="{ backgroundImage: 'url(' + getUrl(item) + ')' }"
          @click.stop="selectImage(item)"
     />
+    <div v-if="item.type=== 'VIDEO'" class="videolink">
+      Vídeo
+    </div>
     <div v-if="isAdmin()">
       <a v-if="!isUnlocked" href="#" class="adminUnlock" @click="toggleLock">Unlock</a>
       <a v-if="isUnlocked" href="#" class="adminLock" @click="toggleLock">Lock</a>
@@ -32,6 +35,10 @@
   }
   .lockedItem {
     opacity: 0.1;
+  }
+  .videolink {
+    color: #efefef;
+    font-size: 1.2em;
   }
 </style>
 <script>
@@ -72,7 +79,7 @@ export default {
     },
     selectImage(item) {
       this.$emit('selectImage', item);
-    }
+    },
   }
 }
 </script>

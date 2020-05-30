@@ -12,6 +12,7 @@
       </div>
     </div>
     <SelectedItem v-if="selectedItem"
+                  :item="selectedItem"
                   :url="getUrl(selectedItem)"
                   @hide="hideImage()"
     />
@@ -45,7 +46,7 @@
 import SelectedItem from './SelectedItem';
 import RoomItem from './RoomItem';
 
-const anItem = (id, roomId, image) => ({ id, roomId, image });
+const anItem = (id, roomId, image, type = '') => ({ id, roomId, image, type });
 
 export default {
   name: 'Room',
@@ -63,6 +64,9 @@ export default {
     return {
       publicPath: process.env.BASE_URL,
       items: [
+        anItem(101, 1, 'movie-tv.mp4', 'VIDEO'),
+        anItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg'),
+        anItem(103, 1, 'cuadros-poligonos.jpg'),
         anItem(203, 2, 'library.jpg'),
         anItem(201, 2, 'book-catalog.jpg'),
         anItem(202, 2, 'book-disney.jpg'),
@@ -71,7 +75,7 @@ export default {
         anItem(401, 4, 'frame-qo.jpg'),
         anItem(402, 4, 'frames-more-generic.jpg'),
         anItem(403, 4, 'frame-generic.jpg'),
-        anItem(404, 4, 'piano.jpg'),
+        anItem(404, 4, 'piano.jpg', 'PIANO'),
         anItem(405, 4, 'door.jpg'),
         anItem(406, 4, 'lock-door.jpg'),
         anItem(503, 5, 'felpudo.jpg'),
@@ -82,7 +86,6 @@ export default {
         anItem(505, 5, 'lock-door-dimension.jpg'),
       ],
       roomState: {
-        // unlockedItems: [201, 203, 401, 402, 403, 404, 405, 501, 502, 503, 504, 506]
         unlockedItems: [],
       },
       selectedItem: null
