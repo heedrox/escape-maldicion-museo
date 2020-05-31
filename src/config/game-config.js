@@ -36,8 +36,11 @@ export default {
     anItem(505, 5, '5-lock-door-dimension.jpg'),
     anItem(508, 5, '8-elmo-2.jpg'),
 
+    anItem(600, 6, 'room.jpg'),
     anItem(601, 6, 'computer.jpg'),
-    anItem(602, 6, 'alfabeto-runico.pdf', 'PDF'),
+    anItem(602, 6, 'pergamino-cuadros.jpg'),
+    anItem(603, 6, 'alfabeto-runico.pdf', 'PDF'),
+
 
 
     anItem(704, 7, 'felpudo.jpg'),

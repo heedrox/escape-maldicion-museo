@@ -3,8 +3,8 @@
     <div class="close" @click="$emit('hide')">
       X
     </div>
-    <SelectedViewItem v-if="item.type === 'VIDEO'" :src="url" />
-    <SelectedPdfItem v-if="item.type === 'PDF'" :src="url" />
+    <SelectedVideoItem v-if="item.type === 'VIDEO'" :src="url" />
+    <SelectedPdfItem v-else-if="item.type === 'PDF'" :src="url" />
     <SelectedPianoItem v-else-if="item.type === 'PIANO'" :alt="item.image" :src="url" />
     <div v-else class="zoomed-item box" @click.stop="">
       <span class="helper"></span>
@@ -59,7 +59,7 @@
   }
 </style>
 <script>
-import SelectedViewItem from './SelectedViewItem';
+import SelectedVideoItem from './SelectedVideoItem';
 import SelectedPdfItem from './SelectedPdfItem';
 import SelectedPianoItem from './SelectedPianoItem';
 
@@ -68,7 +68,7 @@ export default {
   components: {
     SelectedPianoItem,
     SelectedPdfItem,
-    SelectedViewItem,
+    SelectedVideoItem,
   },
   props: {
     url: {
