@@ -21,6 +21,12 @@ export default {
     anItem(301, 3, 'pasillo.jpg'),
     anItem(302, 3, 'final-door.jpg'),
     anItem(303, 3, '5-digit-lock.jpg'),
+    anItem(304, 3, 'tomb-room.jpg'),
+    anItem(305, 3, 'closed-tomb.jpg'),
+    anItem(306, 3, 'lock-tomb-1.jpg'),
+    anItem(307, 3, 'lock-tomb-2.jpg'),
+    anItem(308, 3, 'open-tomb.jpg'),
+    anItem(309, 3, 'the-end.mp4', 'VIDEO'),
 
     anItem(401, 4, 'frame-qo.jpg'),
     anItem(402, 4, 'frames-more-generic.jpg'),
@@ -49,6 +55,8 @@ export default {
 
 
     anItem(704, 7, 'felpudo.jpg'),
+    anItem(705, 7, 'basement.jpg'),
+    anItem(706, 7, 'barril.jpg'),
     anItem(701, 7, 'videocamara-nobatt.jpg'),
     anItem(702, 7, 'videocamara-yesbatt.jpg'),
     anItem(703, 7, 'movie-maldicion.mp4', 'VIDEO'),
