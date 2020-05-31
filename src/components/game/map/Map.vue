@@ -1,7 +1,6 @@
 <template>
   <div class="room-container">
     <div v-if="isAdmin()" class="adminBox">
-      {{unlockedRooms}}
       Unlock room:
       <a href="#" :class="adminGetClassFor(1)" @click.prevent="adminUnlock(1)">1</a>
       <a href="#" :class="adminGetClassFor(2)" @click.prevent="adminUnlock(2)">2</a>
@@ -84,12 +83,12 @@ export default {
   data() {
     return {
       mapState: {
-        unlockedRooms: [2, 4, 5]
+        unlockedRooms: [],
       }
     };
   },
   firestore: {
-    unlockedRooms: db.collection('/game-states/code-nod/unlocked-rooms'),
+    mapState: db.doc('/game-states/code-nod/'),
   },
   methods: {
     isAdmin() {
@@ -101,6 +100,7 @@ export default {
       } else {
         this.mapState.unlockedRooms.push(room);
       }
+      this.$firestoreRefs.mapState.update( { unlockedRooms: this.mapState.unlockedRooms });
     },
     adminGetClassFor(room) {
       return {
