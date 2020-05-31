@@ -19,9 +19,11 @@ export default {
     anItem(401, 4, 'frame-qo.jpg'),
     anItem(402, 4, 'frames-more-generic.jpg'),
     anItem(403, 4, 'frame-generic.jpg'),
+    anItem(407, 4, 'frame-tiburon.jpg'),
     anItem(404, 4, 'piano.jpg', 'PIANO'),
+    anItem(406, 4, 'safe-box.jpg'),
     anItem(405, 4, 'door.jpg'),
-    anItem(406, 4, 'lock-door.jpg'),
+
     anItem(503, 5, '3-felpudo.jpg'),
     anItem(506, 5, '6-cuadros.jpg'),
     anItem(504, 5, '4-q-o-hint.jpg'),
