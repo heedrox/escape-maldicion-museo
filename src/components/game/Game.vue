@@ -1,7 +1,7 @@
 <template>
   <div>
     <Map class="left-top box" :active-room="activeRoom" @changeRoom="changeRoom($event)"></Map>
-    <div class="left-bottom box"></div>
+    <CodeBreaker class="left-bottom box"></CodeBreaker>
     <Room class="right box" :active-room="activeRoom" :game-config="gameConfig"></Room>
   </div>
 </template>
@@ -35,10 +35,12 @@
 import Map from './map/Map';
 import Room from './room/Room';
 import GAME_CONFIG from '../../config/game-config.js';
+import CodeBreaker from './code-breaker/CodeBreaker';
 
 export default {
   name: 'Game',
   components: {
+    CodeBreaker,
     Map,
     Room
   },
