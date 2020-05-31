@@ -73,7 +73,7 @@ export default {
     },
     getUrl(item) {
       return item.type === 'VIDEO'?
-        `${this.publicPath}common/play-video.jpg`:
+        `${this.publicPath}game/common/play-video.jpg`:
         `${this.publicPath}game/${item.roomId}/${item.image}`;
     },
     selectImage(item) {
