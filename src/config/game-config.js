@@ -16,8 +16,11 @@ export default {
     anItem(204, 2, 'lock-to-3.jpg'),
     anItem(206, 2, 'lock-to-3.jpg'),
     anItem(202, 2, 'book-disney.jpg'),
-
     anItem(210, 2, 'elmo-3.jpg'),
+
+    anItem(301, 3, 'pasillo.jpg'),
+    anItem(302, 3, 'final-door.jpg'),
+    anItem(303, 3, '5-digit-lock.jpg'),
 
     anItem(401, 4, 'frame-qo.jpg'),
     anItem(402, 4, 'frames-more-generic.jpg'),
@@ -40,6 +43,7 @@ export default {
     anItem(604, 6, 'more-room.jpg'),
     anItem(601, 6, 'computer.jpg'),
     anItem(602, 6, 'pergamino-cuadros.jpg'),
+    anItem(605, 6, 'pergamino-maldicion.jpg'),
     anItem(603, 6, 'alfabeto-runico.pdf', 'PDF'),
 
 
