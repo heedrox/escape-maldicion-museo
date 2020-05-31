@@ -4,7 +4,7 @@ export default {
   defaultActiveRoom: 5,
   codes: [
     'SPIG', //Qs and Os
-    '563402568', // poligonos cuadros
+    '563402208', // poligonos cuadros
     '5703681924', // Tiburon
     'OGALU', //runas
     'C4QN8', //cuadros archiduque
@@ -12,6 +12,8 @@ export default {
     'EBGFA', //PIANO
     '86204', //arana escarabajo ...
     '9455', //vela, ojo, constelacion, serpiente
+    'ELMOWEC',
+    'OEMECWE',
   ],
   items: [
     anItem(101, 1, 'movie-tv.mp4', 'VIDEO'),
