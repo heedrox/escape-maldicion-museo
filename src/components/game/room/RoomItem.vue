@@ -72,9 +72,9 @@ export default {
       this.$emit('toggleLock', item);
     },
     getUrl(item) {
-      return item.type === 'VIDEO'?
-        `${this.publicPath}game/common/play-video.jpg`:
-        `${this.publicPath}game/${item.roomId}/${item.image}`;
+      if (item.type === 'VIDEO') return `${this.publicPath}game/common/play-video.jpg`;
+      if (item.type === 'PDF') return `${this.publicPath}game/common/file.png`;
+      return `${this.publicPath}game/${item.roomId}/${item.image}`;
     },
     selectImage(item) {
       this.$emit('selectImage', item);

@@ -35,6 +35,11 @@ export default {
     anItem(502, 5, '2-door-to-dimension.jpg'),
     anItem(505, 5, '5-lock-door-dimension.jpg'),
     anItem(508, 5, '8-elmo-2.jpg'),
+
+    anItem(601, 6, 'computer.jpg'),
+    anItem(602, 6, 'alfabeto-runico.pdf', 'PDF'),
+
+
     anItem(704, 7, 'felpudo.jpg'),
     anItem(701, 7, 'videocamara-nobatt.jpg'),
     anItem(702, 7, 'videocamara-yesbatt.jpg'),

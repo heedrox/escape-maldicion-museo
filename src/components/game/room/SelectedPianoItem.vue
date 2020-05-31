@@ -53,7 +53,7 @@ const FREQS = {
 const getFrequency = (note) => FREQS[note];
 
 export default {
-  name: 'Piano',
+  name: 'SelectedPianoItem',
   props: {
     alt: {
       type: String,

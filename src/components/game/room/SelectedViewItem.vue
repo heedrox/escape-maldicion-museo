@@ -19,7 +19,7 @@
 </style>
 <script>
 export default {
-  name: 'VideoItem',
+  name: 'SelectedViewItem',
   props: {
     src: {
       type: String,
