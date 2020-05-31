@@ -97,7 +97,7 @@ export default {
       this.input = input.target.value;
     },
     isValidCode(value) {
-      return this.gameConfig.codes.indexOf(value) >= 0;
+      return this.gameConfig.codes.indexOf(value.toUpperCase()) >= 0;
     },
     showValidCode() {
       const audio = new Audio(`${this.publicPath}game/common/right-code.mp3`);

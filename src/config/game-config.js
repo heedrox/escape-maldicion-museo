@@ -3,7 +3,15 @@ const anItem = (id, roomId, image, type = '') => ({ id, roomId, image, type });
 export default {
   defaultActiveRoom: 5,
   codes: [
-    '6745',
+    'SPIG', //Qs and Os
+    '563402568', // poligonos cuadros
+    '5703681924', // Tiburon
+    'OGALU', //runas
+    'C4QN8', //cuadros archiduque
+    '14396', //LEARN - Disney
+    'EBGFA', //PIANO
+    '86204', //arana escarabajo ...
+    '9455', //vela, ojo, constelacion, serpiente
   ],
   items: [
     anItem(101, 1, 'movie-tv.mp4', 'VIDEO'),
@@ -55,7 +63,6 @@ export default {
     anItem(602, 6, 'pergamino-cuadros.jpg'),
     anItem(605, 6, 'pergamino-maldicion.jpg'),
     anItem(603, 6, 'alfabeto-runico.pdf', 'PDF'),
-
 
 
     anItem(704, 7, 'felpudo.jpg'),
