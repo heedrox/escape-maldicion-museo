@@ -2,6 +2,9 @@ const anItem = (id, roomId, image, type = '') => ({ id, roomId, image, type });
 
 export default {
   defaultActiveRoom: 5,
+  codes: [
+    '6745',
+  ],
   items: [
     anItem(101, 1, 'movie-tv.mp4', 'VIDEO'),
     anItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg'),

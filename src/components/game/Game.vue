@@ -1,7 +1,7 @@
 <template>
   <div>
     <Map class="left-top box" :active-room="activeRoom" @changeRoom="changeRoom($event)"></Map>
-    <CodeBreaker class="left-bottom box"></CodeBreaker>
+    <CodeBreaker class="left-bottom box" :game-config="gameConfig"></CodeBreaker>
     <Room class="right box" :active-room="activeRoom" :game-config="gameConfig"></Room>
   </div>
 </template>
