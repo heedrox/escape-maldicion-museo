@@ -4,9 +4,6 @@
          :style="{ backgroundImage: 'url(' + getUrl(item) + ')' }"
          @click.stop="selectImage(item)"
     />
-    <div v-if="item.type=== 'VIDEO'" class="videolink">
-      Vídeo
-    </div>
     <div v-if="isAdmin()">
       <a v-if="!isUnlocked" href="#" class="adminUnlock" @click="toggleLock">Unlock</a>
       <a v-if="isUnlocked" href="#" class="adminLock" @click="toggleLock">Lock</a>
@@ -75,7 +72,9 @@ export default {
       this.$emit('toggleLock', item);
     },
     getUrl(item) {
-      return `${this.publicPath}game/${item.roomId}/${item.image}`
+      return item.type === 'VIDEO'?
+        `${this.publicPath}common/play-video.jpg`:
+        `${this.publicPath}game/${item.roomId}/${item.image}`;
     },
     selectImage(item) {
       this.$emit('selectImage', item);

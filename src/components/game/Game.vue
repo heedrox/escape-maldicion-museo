@@ -2,7 +2,7 @@
   <div>
     <Map class="left-top box" :active-room="activeRoom" @changeRoom="changeRoom($event)"></Map>
     <div class="left-bottom box"></div>
-    <Room class="right box" :active-room="activeRoom"></Room>
+    <Room class="right box" :active-room="activeRoom" :game-config="gameConfig"></Room>
   </div>
 </template>
 <style scoped>
@@ -34,6 +34,7 @@
 <script>
 import Map from './map/Map';
 import Room from './room/Room';
+import GAME_CONFIG from '../../config/game-config.js';
 
 export default {
   name: 'Game',
@@ -43,7 +44,8 @@ export default {
   },
   data() {
     return {
-      activeRoom: 5,
+      activeRoom: GAME_CONFIG.defaultActiveRoom,
+      gameConfig: GAME_CONFIG
     }
   },
   methods: {
