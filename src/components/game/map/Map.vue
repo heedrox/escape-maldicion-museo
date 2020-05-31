@@ -1,6 +1,7 @@
 <template>
   <div class="room-container">
     <div v-if="isAdmin()" class="adminBox">
+      {{unlockedRooms}}
       Unlock room:
       <a href="#" :class="adminGetClassFor(1)" @click.prevent="adminUnlock(1)">1</a>
       <a href="#" :class="adminGetClassFor(2)" @click.prevent="adminUnlock(2)">2</a>
@@ -65,10 +66,12 @@
     <div class="separator"></div>
     <div class="separator"></div>
     <div class="separator"></div>
+
   </div>
 </template>
 <script>
 import { isAdmin } from '../../../lib/is-admin';
+import { db } from '../../../config/db';
 
 export default {
   name: 'Map',
@@ -84,6 +87,9 @@ export default {
         unlockedRooms: [2, 4, 5]
       }
     };
+  },
+  firestore: {
+    unlockedRooms: db.collection('/game-states/code-nod/unlocked-rooms'),
   },
   methods: {
     isAdmin() {
