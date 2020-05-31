@@ -23,6 +23,7 @@ export default {
     anItem(303, 3, '5-digit-lock.jpg'),
     anItem(304, 3, 'tomb-room.jpg'),
     anItem(305, 3, 'closed-tomb.jpg'),
+    anItem(310, 3, 'pergamino-in-tomb.jpg'),
     anItem(306, 3, 'lock-tomb-1.jpg'),
     anItem(307, 3, 'lock-tomb-2.jpg'),
     anItem(308, 3, 'open-tomb.jpg'),
