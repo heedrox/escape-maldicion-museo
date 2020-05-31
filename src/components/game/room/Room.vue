@@ -3,7 +3,7 @@
     <div class="all-items">
       <div class="items-container">
         <RoomItem v-for="item in itemsInRoom"
-                  :key="item.image"
+                  :key="item.id"
                   :item="item"
                   :is-unlocked="isUnlocked(item.id)"
                   @selectImage="selectImage($event)"
@@ -45,6 +45,7 @@
 <script>
 import SelectedItem from './SelectedItem';
 import RoomItem from './RoomItem';
+import { db } from '../../../config/db';
 
 export default {
   name: 'Room',
@@ -65,11 +66,14 @@ export default {
   data() {
     return {
       publicPath: process.env.BASE_URL,
-      roomState: {
+      gameState: {
         unlockedItems: [],
       },
       selectedItem: null
     }
+  },
+  firestore: {
+    gameState: db.doc('/game-states/code-nod/'),
   },
   computed: {
     itemsInRoom() {
@@ -79,10 +83,11 @@ export default {
   methods: {
     adminToggleLock(itemId) {
       if (this.isUnlocked(itemId)) {
-        this.roomState.unlockedItems.splice(this.roomState.unlockedItems.indexOf(itemId), 1);
+        this.gameState.unlockedItems.splice(this.gameState.unlockedItems.indexOf(itemId), 1);
       } else {
-        this.roomState.unlockedItems.push(itemId);
+        this.gameState.unlockedItems.push(itemId);
       }
+      this.$firestoreRefs.gameState.update( { unlockedItems: this.gameState.unlockedItems });
     },
     getUrl(item) {
       return `${this.publicPath}game/${item.roomId}/${item.image}`
@@ -94,7 +99,7 @@ export default {
       this.selectedItem = null;
     },
     isUnlocked(itemId) {
-      return this.roomState.unlockedItems.indexOf(itemId) >= 0;
+      return this.gameState.unlockedItems.indexOf(itemId) >= 0;
     }
   }
 }
