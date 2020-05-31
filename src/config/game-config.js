@@ -33,6 +33,7 @@ export default {
     anItem(210, 2, 'elmo-3.jpg'),
 
     anItem(301, 3, 'pasillo.jpg'),
+    anItem(311, 3, 'pergamino-pasillo.jpg'),
     anItem(302, 3, 'final-door.jpg'),
     anItem(303, 3, '5-digit-lock.jpg'),
     anItem(304, 3, 'tomb-room.jpg'),
