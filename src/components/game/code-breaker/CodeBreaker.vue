@@ -68,6 +68,7 @@ export default {
     input: '',
     isRightCode: false,
     isWrongCode: false,
+    publicPath: process.env.BASE_URL,
   }),
   computed: {
     inputClass() {
@@ -80,7 +81,6 @@ export default {
   },
   methods: {
     onChange(input) {
-      console.log('input changed', input);
       this.input = input;
     },
     onKeyPress(button) {
@@ -100,18 +100,22 @@ export default {
       return this.gameConfig.codes.indexOf(value) >= 0;
     },
     showValidCode() {
+      const audio = new Audio(`${this.publicPath}game/common/right-code.mp3`);
+      audio.play();
       this.isRightCode = true;
       setTimeout(() => {
         this.isRightCode = false;
         this.input = '';
-      }, 3000);
+      }, 1500);
     },
     showWrongCode() {
+      const audio = new Audio(`${this.publicPath}game/common/wrong-code.mp3`);
+      audio.play();
       this.isWrongCode = true;
       setTimeout(() => {
         this.isWrongCode = false;
         this.input = '';
-      }, 3000);
+      }, 1500);
     }
   }
 }
