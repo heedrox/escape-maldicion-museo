@@ -3,6 +3,7 @@ const anItem = (id, roomId, image, type = '') => ({ id, roomId, image, type });
 export default {
   defaultActiveRoom: 5,
   codes: [
+    '0000', //to test
     'SPIG', //Qs and Os
     '563402208', // poligonos cuadros
     '5703681924', // Tiburon
