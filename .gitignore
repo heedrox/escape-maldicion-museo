@@ -20,4 +20,4 @@ yarn-error.log*
 *.sln
 *.sw?
 
-./src/config/db-options.js
+db-options.js
