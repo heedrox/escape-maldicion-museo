@@ -9,7 +9,6 @@
       <a href="#" :class="adminGetClassFor(5)" @click.prevent="adminUnlock(5)">5</a>
       <a href="#" :class="adminGetClassFor(6)" @click.prevent="adminUnlock(6)">6</a>
       <a href="#" :class="adminGetClassFor(7)" @click.prevent="adminUnlock(7)">7</a>
-      <a href="#" :class="adminGetClassFor(8)" @click.prevent="adminUnlock(8)">8</a>
     </div>
     <div class="separator"></div>
     <div class="separator"></div>
@@ -54,8 +53,9 @@
 
     <div class="separator"></div>
     <div class="room box room7" :class="getClassForRoom(7)" @click="changeRoom(7)"></div>
-
-    <div class="room box room8" :class="getClassForRoom(8)" @click="changeRoom(8)"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
+    <div class="separator"></div>
     <div class="separator"></div>
 
     <div class="separator"></div>
@@ -165,10 +165,6 @@ export default {
 
   .room.active {
     border: solid 1vh rgb(212, 1, 47);
-  }
-
-  .room8 {
-    grid-column-start: 6;
   }
 
   .separator {

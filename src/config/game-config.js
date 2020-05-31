@@ -6,10 +6,10 @@ export default {
     'SPIG', //Qs and Os
     '563402208', // poligonos cuadros
     '5703681924', // Tiburon
-    'OGALU', //runas
     'C4QN8', //cuadros archiduque
     '14396', //LEARN - Disney
     'EBGFA', //PIANO
+    'OGALU', //runas
     '86204', //arana escarabajo ...
     '9455', //vela, ojo, constelacion, serpiente
     'ELMOWEC',
