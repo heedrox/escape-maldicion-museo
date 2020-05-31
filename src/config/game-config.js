@@ -6,6 +6,9 @@ export default {
     anItem(101, 1, 'movie-tv.mp4', 'VIDEO'),
     anItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg'),
     anItem(103, 1, 'cuadros-poligonos.jpg'),
+    anItem(104, 1, 'safe-box-in-1.jpg'),
+    anItem(105, 1, 'elmo-1.jpg'),
+
     anItem(203, 2, 'library.jpg'),
     anItem(201, 2, 'book-catalog.jpg'),
     anItem(207, 2, 'box-elmo.jpg'),
@@ -13,8 +16,9 @@ export default {
     anItem(204, 2, 'lock-to-3.jpg'),
     anItem(206, 2, 'lock-to-3.jpg'),
     anItem(202, 2, 'book-disney.jpg'),
-    anItem(209, 2, 'elmo-1.jpg'),
+
     anItem(210, 2, 'elmo-3.jpg'),
+
     anItem(401, 4, 'frame-qo.jpg'),
     anItem(402, 4, 'frames-more-generic.jpg'),
     anItem(403, 4, 'frame-generic.jpg'),
