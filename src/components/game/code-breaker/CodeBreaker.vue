@@ -3,7 +3,8 @@
     <input
       :value="input"
       class="input"
-      placeholder="Tap on the virtual keyboard to start"
+      placeholder="ESCRIBE EN EL TECLADO"
+      readonly
       @input="onInputChange"
     >
     <div class="keyboard">
@@ -18,6 +19,7 @@
     width: 20vw;
     margin-bottom: 5vh;
     text-align: center;
+    font-size: 3vh;
     font-family: Consolas, Courier, serif;
     text-transform: uppercase;
     background-color: #111111;
@@ -39,11 +41,12 @@ export default {
     SimpleKeyboard,
   },
   data: () => ({
-    input: 'x'
+    input: ''
   }),
   methods: {
     onChange(input) {
       console.log('input changed', input)
+      this.input = input;
     },
     onKeyPress(button) {
       console.log('button pressed', button)
