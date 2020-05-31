@@ -134,8 +134,8 @@ export default {
 <style scoped>
   .adminBox {
     position: absolute;
-    font-size: 2em;
-    font-family: Helvetica;
+    font-size: 1.5em;
+    font-family: Consolas, Courier, serif;
     padding-top: 0.5vh;
     padding-left: 1vw;
     color: #efefef;
