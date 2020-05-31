@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "firebase": "^7.14.6",
     "simple-keyboard": "^2.29.36",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuefire": "^2.2.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
