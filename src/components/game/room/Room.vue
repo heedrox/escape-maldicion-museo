@@ -92,7 +92,7 @@ export default {
       this.$firestoreRefs.gameState.update( { unlockedItems: this.gameState.unlockedItems });
     },
     getUrl(item) {
-      if (!isAdmin() && isCorruptedForMe(item.destinataries)) {
+      if (item.corrupted && !isAdmin() && isCorruptedForMe(item.destinataries)) {
         return `${this.publicPath}game/common/corrupted-image.jpg`;
       }
       return `${this.publicPath}game/${item.roomId}/${item.image}`

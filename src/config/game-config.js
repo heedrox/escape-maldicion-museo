@@ -1,7 +1,7 @@
 const anItem = (id, roomId, image, type = '') =>
   ({ id, roomId, image, type, corrupted: false });
 const aCorruptedItem = (id, roomId, image, destinataries, type = '') =>
-  ({id, roomId, image, destinataries, type, corrupted: true});
+  ({ id, roomId, image, destinataries, type, corrupted: true });
 
 export default {
   defaultActiveRoom: 5,
@@ -27,7 +27,7 @@ export default {
   ],
   items: [
     anItem(101, 1, 'movie-tv.mp4', 'VIDEO'),
-    anItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg'),
+    aCorruptedItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg', [2, 4]),
     anItem(103, 1, 'cuadros-poligonos.jpg'),
     anItem(104, 1, 'safe-box-in-1.jpg'),
     aCorruptedItem(105, 1, 'elmo-1.jpg', [3]),
@@ -43,7 +43,7 @@ export default {
 
     anItem(301, 3, 'pasillo.jpg'),
     anItem(311, 3, 'pergamino-pasillo.jpg'),
-    anItem(302, 3, 'final-door.jpg'),
+    aCorruptedItem(302, 3, 'final-door.jpg', [1, 4]),
     anItem(303, 3, '5-digit-lock.jpg'),
     anItem(304, 3, 'tomb-room.jpg'),
     anItem(305, 3, 'closed-tomb.jpg'),
@@ -73,9 +73,9 @@ export default {
     anItem(600, 6, 'room.jpg'),
     anItem(604, 6, 'more-room.jpg'),
     anItem(601, 6, 'computer.jpg'),
-    anItem(602, 6, 'pergamino-cuadros.jpg'),
+    aCorruptedItem(602, 6, 'pergamino-cuadros.jpg', [1, 3]),
     anItem(605, 6, 'pergamino-maldicion.jpg'),
-    anItem(603, 6, 'alfabeto-runico.pdf', 'PDF'),
+    aCorruptedItem(603, 6, 'alfabeto-runico.pdf', [2, 3], 'PDF'),
 
     aCorruptedItem(704, 7, 'felpudo.jpg', [1]),
     anItem(705, 7, 'basement.jpg'),
