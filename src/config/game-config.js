@@ -1,7 +1,16 @@
-const anItem = (id, roomId, image, type = '') => ({ id, roomId, image, type });
+const anItem = (id, roomId, image, type = '') =>
+  ({ id, roomId, image, type, corrupted: false });
+const aCorruptedItem = (id, roomId, image, destinataries, type = '') =>
+  ({id, roomId, image, destinataries, type, corrupted: true});
 
 export default {
   defaultActiveRoom: 5,
+  players: {
+    'LEGALBUENO': 1,
+    'ELMASTA': 2,
+    'MARICARMENDECORNI': 3,
+    'ELENANO': 4,
+  },
   codes: [
     '0000', //to test
     'SPIG', //Qs and Os
@@ -68,8 +77,7 @@ export default {
     anItem(605, 6, 'pergamino-maldicion.jpg'),
     anItem(603, 6, 'alfabeto-runico.pdf', 'PDF'),
 
-
-    anItem(704, 7, 'felpudo.jpg'),
+    aCorruptedItem(704, 7, 'felpudo.jpg', [1]),
     anItem(705, 7, 'basement.jpg'),
     anItem(706, 7, 'barril.jpg'),
     anItem(701, 7, 'videocamara-nobatt.jpg'),

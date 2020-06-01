@@ -40,6 +40,7 @@
 </style>
 <script>
 import { isAdmin } from '../../../lib/is-admin';
+import { isCorruptedForMe } from '../../../lib/is-corrupted-destinatary';
 
 export default {
   name: 'Room',
@@ -72,6 +73,7 @@ export default {
       this.$emit('toggleLock', item);
     },
     getUrl(item) {
+      if (isCorruptedForMe(item.destinataries)) return `${this.publicPath}game/common/corrupted-image.jpg`;
       if (item.type === 'VIDEO') return `${this.publicPath}game/common/play-video.jpg`;
       if (item.type === 'PDF') return `${this.publicPath}game/common/file.png`;
       return `${this.publicPath}game/${item.roomId}/${item.image}`;
