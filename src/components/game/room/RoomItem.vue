@@ -73,7 +73,9 @@ export default {
       this.$emit('toggleLock', item);
     },
     getUrl(item) {
-      if (isCorruptedForMe(item.destinataries)) return `${this.publicPath}game/common/corrupted-image.jpg`;
+      if (!isAdmin() && isCorruptedForMe(item.destinataries)) {
+        return `${this.publicPath}game/common/corrupted-image.jpg`;
+      }
       if (item.type === 'VIDEO') return `${this.publicPath}game/common/play-video.jpg`;
       if (item.type === 'PDF') return `${this.publicPath}game/common/file.png`;
       return `${this.publicPath}game/${item.roomId}/${item.image}`;

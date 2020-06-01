@@ -30,7 +30,7 @@ export default {
     anItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg'),
     anItem(103, 1, 'cuadros-poligonos.jpg'),
     anItem(104, 1, 'safe-box-in-1.jpg'),
-    anItem(105, 1, 'elmo-1.jpg'),
+    aCorruptedItem(105, 1, 'elmo-1.jpg', [3]),
 
     anItem(203, 2, 'library.jpg'),
     anItem(201, 2, 'book-catalog.jpg'),
@@ -39,7 +39,7 @@ export default {
     anItem(204, 2, 'lock-to-3.jpg'),
     anItem(206, 2, 'lock-to-3.jpg'),
     anItem(202, 2, 'book-disney.jpg'),
-    anItem(210, 2, 'elmo-3.jpg'),
+    aCorruptedItem(210, 2, 'elmo-3.jpg', [4]),
 
     anItem(301, 3, 'pasillo.jpg'),
     anItem(311, 3, 'pergamino-pasillo.jpg'),
@@ -68,7 +68,7 @@ export default {
     anItem(507, 5, '7-safe-lock-tiburon.jpg'),
     anItem(502, 5, '2-door-to-dimension.jpg'),
     anItem(505, 5, '5-lock-door-dimension.jpg'),
-    anItem(508, 5, '8-elmo-2.jpg'),
+    aCorruptedItem(508, 5, '8-elmo-2.jpg', [2]),
 
     anItem(600, 6, 'room.jpg'),
     anItem(604, 6, 'more-room.jpg'),
