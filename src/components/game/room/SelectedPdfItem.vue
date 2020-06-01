@@ -1,7 +1,8 @@
 <template>
   <div class="zoomed-item box" @click.stop="">
     <iframe :src="src"
-            height="100%" width="100%">
+            height="100%" width="100%"
+    >
     </iframe>
   </div>
 </template>
