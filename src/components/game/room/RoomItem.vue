@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="isAdmin() || isUnlocked" >
     <img v-if="isAdmin() || isUnlocked" :class="adminGetClass()" src="../../../assets/common/round-items.png"
          :style="{ backgroundImage: 'url(' + getUrl(item) + ')' }"
          @click.stop="selectImage(item)"
