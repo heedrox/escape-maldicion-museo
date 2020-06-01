@@ -46,6 +46,8 @@
 import SelectedItem from './SelectedItem';
 import RoomItem from './RoomItem';
 import { db } from '../../../config/db';
+import { isAdmin } from '../../../lib/is-admin';
+import { isCorruptedForMe } from '../../../lib/is-corrupted-destinatary';
 
 export default {
   name: 'Room',
@@ -90,6 +92,9 @@ export default {
       this.$firestoreRefs.gameState.update( { unlockedItems: this.gameState.unlockedItems });
     },
     getUrl(item) {
+      if (!isAdmin() && isCorruptedForMe(item.destinataries)) {
+        return `${this.publicPath}game/common/corrupted-image.jpg`;
+      }
       return `${this.publicPath}game/${item.roomId}/${item.image}`
     },
     selectImage(item) {
