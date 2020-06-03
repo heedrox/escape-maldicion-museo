@@ -56,7 +56,7 @@ export default {
     }
   },
   mounted() {
-
+    this.startTimer();
   },
   destroyed() {
     this.clearTimer();
@@ -80,7 +80,6 @@ export default {
       if (window.confirm('Quieres restartear el timer?')) {
         this.now = new Date();
         db.doc('/game-states/code-nod/').update({endTime: addHours(1, this.now)});
-        this.startTimer();
       }
     }
   }
