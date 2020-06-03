@@ -26,7 +26,7 @@
   }
 
   .all-items::-webkit-scrollbar {
-    background: #999;
+    background: #b5b5b5;
   }
 
   .all-items::-webkit-scrollbar-thumb {
