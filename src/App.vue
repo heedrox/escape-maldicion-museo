@@ -40,6 +40,10 @@ export default {
   font-family: 'FaceYourFears';
   src: url('./assets/common/FaceYourFears.ttf')  format('truetype')
 }
+@font-face {
+  font-family: 'Digital7';
+  src: url('./assets/common/digital-7.ttf')  format('truetype')
+}
 #app {
   font-family: 'FaceYourFears', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

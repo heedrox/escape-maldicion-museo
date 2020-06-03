@@ -1,26 +1,35 @@
 <template>
   <div>
-    <Map class="left-top box" :active-room="activeRoom" @changeRoom="changeRoom($event)"></Map>
+    <Counter class="left-top box"></Counter>
+    <Map class="left-middle box" :active-room="activeRoom" @changeRoom="changeRoom($event)"></Map>
     <CodeBreaker class="left-bottom box" :game-config="gameConfig"></CodeBreaker>
     <Room class="right box" :active-room="activeRoom" :game-config="gameConfig"></Room>
   </div>
 </template>
 <style scoped>
     .left-top {
+      position: absolute;
+      top: 5vh;
+      left: 3vw;
+      background-color: #000;
+      width: 33vw;
+      height: 9vh;
+    }
+    .left-middle {
         position: absolute;
-        top: 5vh;
+        top: 18vh;
         left: 3vw;
         background-color: #000;
         width: 33vw;
-        height: 43vh;
+        height: 37vh;
      }
     .left-bottom {
         position: absolute;
-        top: 52vh;
+        top: 59vh;
         left: 3vw;
         background-color: #000;
         width: 33vw;
-        height: 43vh;
+        height: 37vh;
     }
     .right {
         position: fixed;
@@ -36,10 +45,12 @@ import Map from './map/Map';
 import Room from './room/Room';
 import GAME_CONFIG from '../../config/game-config.js';
 import CodeBreaker from './code-breaker/CodeBreaker';
+import Counter from './counter/Counter';
 
 export default {
   name: 'Game',
   components: {
+    Counter,
     CodeBreaker,
     Map,
     Room

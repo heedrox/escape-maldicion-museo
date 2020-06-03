@@ -3,7 +3,7 @@
     <input
       :value="input"
       :class="inputClass"
-      placeholder="ESCRIBE EN EL TECLADO"
+      placeholder="PULSA CODIGO"
       readonly
       @input="onInputChange"
     >
@@ -14,10 +14,10 @@
 </template>
 <style scoped>
   input {
-    margin-top: 5vh;
-    height: 5vh;
+    margin-top: 3vh;
+    height: 4vh;
     width: 20vw;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
     text-align: center;
     font-size: 3vh;
     font-family: Consolas, Courier, serif;
