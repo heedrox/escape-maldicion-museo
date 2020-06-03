@@ -2,7 +2,7 @@
   <div>
     <p>{{ minutes }}:{{ seconds }}</p>
     <p v-if="isAdmin()" class="adminbox" @click="pressStart()">
-      Go>
+      Restart
     </p>
   </div>
 </template>
@@ -24,8 +24,11 @@
     top: 0vh;
     font-family: Consolas, Serif,serif;
     letter-spacing: normal;
+    color:#333;
   }
 </style><script>
+import { db } from '../../../config/db';
+
 const asCounterWithPadding = (number, padding) => number < 10 ? (padding + number) : (number + '')
 import { addHours, diffMinutes, diffSeconds } from '../../../lib/dates'
 import {isAdmin} from '../../../lib/is-admin';
@@ -34,12 +37,17 @@ export default {
   name: 'Counter',
   data () {
     return {
-      endTime: null,
       now: new Date(),
-      paused: true
+      gameState: {},
     }
   },
+  firestore: {
+    gameState: db.doc('/game-states/code-nod/'),
+  },
   computed: {
+    endTime: function() {
+      return (this.gameState && this.gameState.endTime) ? this.gameState.endTime.toDate() : null;
+    },
     minutes: function () {
       return this.endTime ? asCounterWithPadding(diffMinutes(this.endTime, this.now), '0') : '-'
     },
@@ -71,7 +79,7 @@ export default {
     pressStart() {
       if (window.confirm('Quieres restartear el timer?')) {
         this.now = new Date();
-        this.endTime = addHours(1, this.now);
+        db.doc('/game-states/code-nod/').update({endTime: addHours(1, this.now)});
         this.startTimer();
       }
     }
