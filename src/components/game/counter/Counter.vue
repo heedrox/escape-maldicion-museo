@@ -1,6 +1,9 @@
 <template>
   <div>
     <p>{{ minutes }}:{{ seconds }}</p>
+    <p v-if="isAdmin()" class="adminbox" @click="pressStart()">
+      Go>
+    </p>
   </div>
 </template>
 <style scoped>
@@ -13,9 +16,19 @@
     color:#fff;
     letter-spacing: 1vw;
   }
+  p.adminbox {
+    font-size: 3vh;
+    display:block;
+    text-align:left;
+    position:absolute;
+    top: 0vh;
+    font-family: Consolas, Serif,serif;
+    letter-spacing: normal;
+  }
 </style><script>
 const asCounterWithPadding = (number, padding) => number < 10 ? (padding + number) : (number + '')
 import { addHours, diffMinutes, diffSeconds } from '../../../lib/dates'
+import {isAdmin} from '../../../lib/is-admin';
 
 export default {
   name: 'Counter',
@@ -41,16 +54,26 @@ export default {
     this.clearTimer();
   },
   methods: {
+    isAdmin() {
+      return isAdmin();
+    },
     clearTimer () {
       if (this.intervalTimer) {
         window.clearInterval(this.intervalTimer)
       }
     },
     startTimer () {
-      this.clearTimer()
+      this.clearTimer();
       this.intervalTimer = window.setInterval(() => {
         this.now = new Date()
       }, 500)
+    },
+    pressStart() {
+      if (window.confirm('Quieres restartear el timer?')) {
+        this.now = new Date();
+        this.endTime = addHours(1, this.now);
+        this.startTimer();
+      }
     }
   }
 }
