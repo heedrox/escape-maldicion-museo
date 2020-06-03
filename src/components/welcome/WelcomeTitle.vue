@@ -20,10 +20,13 @@
 
   a.start {
     display: block;
-    margin-top: 40vh;
     font-size: 4em;
     color: rgba(212, 1, 47, 0.58);
     text-decoration: underline;
+    position: absolute;
+    bottom: 5vh;
+    text-align: center;
+    width:100%;
   }
 </style>
 <script>

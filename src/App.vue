@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      state: STATES.GAME,
+      state: STATES.WELCOME,
     }
   },
   methods: {
@@ -58,5 +58,6 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow:hidden;
 }
 </style>
