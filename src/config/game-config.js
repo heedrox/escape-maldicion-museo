@@ -22,7 +22,7 @@ export default {
     'OGALU', //runas
     '86204', //arana escarabajo ...
     '9455', //vela, ojo, constelacion, serpiente
-    'ELMOWEC',
+    'ELMOWOW',
     'OEMECWE',
   ],
   items: [
@@ -37,7 +37,6 @@ export default {
     anItem(207, 2, 'box-elmo.jpg'),
     anItem(205, 2, 'door-to-egypt.jpg'),
     anItem(204, 2, 'lock-to-3.jpg'),
-    anItem(206, 2, 'lock-to-3.jpg'),
     anItem(202, 2, 'book-disney.jpg'),
     aCorruptedItem(210, 2, 'elmo-3.jpg', [4]),
 
