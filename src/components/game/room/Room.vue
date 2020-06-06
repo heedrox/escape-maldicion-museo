@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="all-items">
+    <div v-if="gameState.ready" class="all-items">
       <div class="items-container">
         <RoomItem v-for="item in itemsInRoom"
                   :key="item.id"
@@ -11,6 +11,11 @@
         />
       </div>
     </div>
+    <div v-if="!gameState.ready" class="waiting">
+      <p>Gracias por venir</p>
+      <p><br /><br /></p>
+      <p>Damian llegará a la hora señalada</p>
+    </div>
     <SelectedItem v-if="selectedItem"
                   :item="selectedItem"
                   :url="getUrl(selectedItem)"
@@ -19,12 +24,16 @@
   </div>
 </template>
 <style>
-  .all-items {
+  .all-items, .waiting {
     padding: 5vh 3vw;
     height: 80vh;
     overflow-y: auto;
   }
 
+  .waiting p {
+    font-size: 10vh;
+    color: #fff;
+  }
   .all-items::-webkit-scrollbar {
     background: #b5b5b5;
   }
@@ -70,6 +79,7 @@ export default {
       publicPath: process.env.BASE_URL,
       gameState: {
         unlockedItems: [],
+        ready: false,
       },
       selectedItem: null
     }
