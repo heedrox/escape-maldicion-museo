@@ -14,7 +14,7 @@ export default {
   codes: [
     '0000', //to test
     'SPIG', //Qs and Os
-    '563402208', // poligonos cuadros
+    '563403408', // poligonos cuadros
     '5703681924', // Tiburon
     'C4QN8', //cuadros archiduque
     '14396', //LEARN - Disney
