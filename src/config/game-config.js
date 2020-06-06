@@ -62,7 +62,6 @@ export default {
     anItem(405, 4, 'door.jpg'),
     anItem(408, 4, 'battery.jpg'),
 
-    anItem(506, 5, '6-cuadros.jpg'),
     anItem(504, 5, '4-q-o-hint.jpg'),
     anItem(501, 5, '1-book-on-table.jpg'),
     anItem(507, 5, '7-safe-lock-tiburon.jpg'),
