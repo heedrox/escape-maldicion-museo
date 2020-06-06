@@ -54,7 +54,6 @@ export default {
     anItem(309, 3, 'the-end.mp4', 'VIDEO'),
 
     anItem(401, 4, 'frame-qo.jpg'),
-    anItem(402, 4, 'frames-more-generic.jpg'),
     anItem(403, 4, 'frame-generic.jpg'),
     anItem(407, 4, 'frame-tiburon.jpg'),
     anItem(404, 4, 'piano.jpg', 'PIANO'),
