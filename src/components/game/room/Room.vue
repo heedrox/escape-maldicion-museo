@@ -14,7 +14,7 @@
     <div v-if="!gameState.ready" class="waiting">
       <p>Gracias por venir</p>
       <p><br /><br /></p>
-      <p>Damian llegará a la hora señalada</p>
+      <p>Damián llegará a la hora señalada</p>
     </div>
     <SelectedItem v-if="selectedItem"
                   :item="selectedItem"
