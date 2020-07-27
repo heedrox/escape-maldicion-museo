@@ -6,10 +6,8 @@ const aCorruptedItem = (id, roomId, image, destinataries, type = '') =>
 export default {
   defaultActiveRoom: 5,
   players: {
-    'LEGALBUENO': 1,
-    'ELMASTA': 2,
-    'MARICARMENDECORNI': 3,
-    'ELENANO': 4,
+    '481516': 1,
+    'SAVETCSTW': 2
   },
   codes: [
     '0000', //to test
@@ -27,9 +25,9 @@ export default {
   ],
   items: [
     anItem(101, 1, 'movie-tv.mp4', 'VIDEO'),
-    aCorruptedItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg', [2, 4]),
+    aCorruptedItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg', [1]),
     anItem(104, 1, 'safe-box-in-1.jpg'),
-    aCorruptedItem(105, 1, 'elmo-1.jpg', [3]),
+    aCorruptedItem(105, 1, 'elmo-1.jpg', [1]),
 
     anItem(203, 2, 'library.jpg'),
     anItem(201, 2, 'book-catalog.jpg'),
@@ -37,7 +35,7 @@ export default {
     anItem(205, 2, 'door-to-egypt.jpg'),
     anItem(204, 2, 'lock-to-3.jpg'),
     anItem(202, 2, 'book-disney.jpg'),
-    aCorruptedItem(210, 2, 'elmo-3.jpg', [4]),
+    aCorruptedItem(210, 2, 'elmo-3.jpg', [1]),
 
     anItem(301, 3, 'pasillo.jpg'),
     anItem(311, 3, 'pergamino-pasillo.jpg'),
@@ -61,14 +59,14 @@ export default {
     anItem(507, 5, '7-safe-lock-tiburon.jpg'),
     anItem(502, 5, '2-door-to-dimension.jpg'),
     anItem(505, 5, '5-lock-door-dimension.jpg'),
-    aCorruptedItem(508, 5, '8-elmo-2.jpg', [2]),
+    aCorruptedItem(508, 5, '8-elmo-2.jpg', [1]),
 
     anItem(600, 6, 'room.jpg'),
     anItem(604, 6, 'more-room.jpg'),
-    aCorruptedItem(602, 6, 'pergamino-cuadros.jpg', [1, 3]),
+    aCorruptedItem(602, 6, 'pergamino-cuadros.jpg', [2]),
     anItem(605, 6, 'pergamino-maldicion.jpg'),
 
-    aCorruptedItem(704, 7, 'felpudo.jpg', [1]),
+    aCorruptedItem(704, 7, 'felpudo.jpg', [2]),
     anItem(705, 7, 'basement.jpg'),
     anItem(706, 7, 'barril.jpg'),
     anItem(702, 7, 'videocamara-yesbatt.jpg'),
