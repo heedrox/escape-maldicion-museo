@@ -19,7 +19,9 @@ export default {
     'EBGFA', //PIANO
     'OGALU', //runas
     '86204', //arana escarabajo ...
-    '9455', //vela, ojo, constelacion, serpiente
+    '9454', //vela, ojo, constelacion, serpiente
+    '9458', //vela, ojo, constelacion, serpiente
+    'ELMOMO',
     'ELMOWOW',
     'OEMECWE',
   ],
@@ -68,7 +70,6 @@ export default {
 
     aCorruptedItem(704, 7, 'felpudo.jpg', [2]),
     anItem(705, 7, 'basement.jpg'),
-    anItem(706, 7, 'barril.jpg'),
     anItem(702, 7, 'videocamara-yesbatt.jpg'),
     anItem(703, 7, 'movie-maldicion.mp4', 'VIDEO'),
   ]
