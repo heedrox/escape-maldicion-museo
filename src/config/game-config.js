@@ -55,7 +55,7 @@ export default {
     anItem(407, 4, 'frame-tiburon.jpg'),
     anItem(404, 4, 'piano.jpg', 'PIANO'),
     anItem(405, 4, 'door.jpg'),
-    anItem(408, 4, 'battery.jpg'),
+    // anItem(408, 4, 'battery.jpg'),
 
     anItem(504, 5, '4-q-o-hint.jpg'),
     anItem(501, 5, '1-book-on-table.jpg'),
