@@ -45,7 +45,7 @@
     <div class="separator"></div>
 
     <div class="separator"></div>
-    <div class="separator"></div>
+    <div class="separator" :class="getClassForSeparator('vertical', 4,7)"></div>
     <div class="separator"></div>
     <div class="separator" :class="getClassForSeparator('vertical', 5,8)"></div>
     <div class="separator"></div>
