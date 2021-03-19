@@ -52,6 +52,7 @@ export default {
     anItem(307, 3, 'lock-tomb-2.jpg'),
     anItem(308, 3, 'open-tomb.jpg'),
     anItem(309, 3, 'the-end.mp4', 'VIDEO'),
+    anInvisibleItem(390, 3, 'damian-es.mp3', 'MP3'),
 
     anItem(401, 4, 'frame-qo.jpg'),
     anItem(403, 4, 'frame-generic.jpg'),
