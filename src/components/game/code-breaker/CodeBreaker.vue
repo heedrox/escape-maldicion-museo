@@ -3,16 +3,16 @@
     <input
       :value="input"
       :class="inputClass"
-      placeholder="PULSA CODIGO"
+      :placeholder="localizedPlaceholder"
       readonly
       @input="onInputChange"
     >
     <div class="keyboard">
-      <SimpleKeyboard :input="input" @onChange="onChange" @onKeyPress="onKeyPress" />
+      <SimpleKeyboard :input="input" @on-change="onChange" @on-key-press="onKeyPress" />
     </div>
   </div>
 </template>
-<style scoped>
+<style scoped lang="scss">
   input {
     margin-top: 3vh;
     height: 4vh;
@@ -23,7 +23,7 @@
     font-family: Consolas, Courier, serif;
     text-transform: uppercase;
     background-color: #111111;
-    border: solid 0.5vh rgb(212, 1, 47);
+    border: solid 0.5vh $primary-color;
     border-radius: 2vh;
     color: white;
   }
@@ -78,6 +78,9 @@ export default {
         'wrong-code': this.isWrongCode,
       };
     },
+    localizedPlaceholder() {
+      return this.gameConfig.keyboard.placeholder;
+    }
   },
   methods: {
     onChange(input) {

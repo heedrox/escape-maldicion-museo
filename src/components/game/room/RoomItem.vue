@@ -2,6 +2,7 @@
   <div v-if="isAdmin() || isUnlocked">
     <img v-if="isAdmin() || isUnlocked" :class="adminGetClass()" src="../../../assets/common/round-items.png"
          :style="{ backgroundImage: 'url(' + getUrl(item) + ')' }"
+         alt="image to unlock"
          @click.stop="selectImage(item)"
     />
     <div v-if="isAdmin()">
@@ -39,11 +40,11 @@
   }
 </style>
 <script>
-import { isAdmin } from '../../../lib/is-admin';
-import { isCorruptedForMe } from '../../../lib/is-corrupted-destinatary';
+import { isAdmin } from '@/lib/is-admin';
+import { imageUrlResolve } from '@/components/game/room/image-url-resolve';
 
 export default {
-  name: 'Room',
+  name: 'RoomItem',
   props: {
     item: {
       type: Object,
@@ -54,6 +55,7 @@ export default {
       default: false
     }
   },
+  emits: ['toggle-lock', 'select-image'],
   data() {
     return {
       publicPath: process.env.BASE_URL,
@@ -70,18 +72,13 @@ export default {
       }
     },
     toggleLock(item) {
-      this.$emit('toggleLock', item);
+      this.$emit('toggle-lock', item);
     },
     getUrl(item) {
-      if (item.corrupted && !isAdmin() && isCorruptedForMe(item.destinataries)) {
-        return `${this.publicPath}game/common/corrupted-image.jpg`;
-      }
-      if (item.type === 'VIDEO') return `${this.publicPath}game/common/play-video.jpg`;
-      if (item.type === 'PDF') return `${this.publicPath}game/common/file.png`;
-      return `${this.publicPath}game/${item.roomId}/${item.image}`;
+      return imageUrlResolve(item, this.publicPath, true);
     },
     selectImage(item) {
-      this.$emit('selectImage', item);
+      this.$emit('select-image', item);
     },
   }
 }

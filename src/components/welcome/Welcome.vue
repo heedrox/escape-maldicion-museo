@@ -1,17 +1,8 @@
 <template>
   <div class="welcome">
-    <welcome-title v-if="state === 'SHOW_WELCOME'" @start="showScroll()"></welcome-title>
+    <welcome-title v-if="state === 'SHOW_WELCOME'" :title="title" @start="showScroll()"></welcome-title>
     <welcome-scroll v-if="state === 'SHOW_SCROLL'" @start="doStart()">
-      A quien corresponda,<br /><br />
-      La desesperación nos invade. Una vez más, la maldición del museo ha vuelto a atacar, y se ha llevado
-      cuatro nuevas
-      víctimas. Todo ocurrió anoche, cuando las doce campanadas repicaron por toda la ciudad.<br /><br />
-      A nuestros oídos han llegado vuestras hazañas, y con humildad y desolación, acudimos a pediros
-      ayuda.
-      Os rogamos que atendáis nuestras plegarias, acudiendo al museo, investigando los
-      extraños sucesos que allá acontecen, y librándonos así, de una vez por todas, de esta escalofriante
-      condena que nos acosa.<br /><br />
-      Atentamente.
+      {{ scrollText }}
     </welcome-scroll>
   </div>
 </template>
@@ -19,6 +10,9 @@
 <script>
 import WelcomeScroll from './WelcomeScroll';
 import WelcomeTitle from './WelcomeTitle';
+import gameConfigFactory from '@/lib/game-config-factory';
+
+const gameConfig = gameConfigFactory.get();
 
 const STATES = {
   SHOW_WELCOME: 'SHOW_WELCOME',
@@ -35,6 +29,14 @@ export default {
     return {
       state: STATES.SHOW_WELCOME,
     }
+  },
+  computed: {
+    scrollText() {
+      return gameConfig.welcomeText;
+    },
+    title() {
+      return gameConfig.title;
+    },
   },
   mounted() {
   },

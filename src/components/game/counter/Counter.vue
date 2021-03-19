@@ -26,12 +26,13 @@
     letter-spacing: normal;
     color:#333;
   }
-</style><script>
-import { db } from '../../../config/db';
+</style>
+<script>
+import firebaseUtil from '@/lib/firebase-util';
 
 const asCounterWithPadding = (number, padding) => number < 10 ? (padding + number) : (number + '')
-import { addHours, diffMinutes, diffSeconds } from '../../../lib/dates'
-import {isAdmin} from '../../../lib/is-admin';
+import { addHours, diffMinutes, diffSeconds } from '@/lib/dates'
+import {isAdmin} from '@/lib/is-admin';
 
 export default {
   name: 'Counter',
@@ -42,7 +43,7 @@ export default {
     }
   },
   firestore: {
-    gameState: db.doc('/game-states/code-nod/'),
+    gameState: firebaseUtil.doc('/'),
   },
   computed: {
     endTime: function() {
@@ -79,7 +80,7 @@ export default {
     pressStart() {
       if (window.confirm('Quieres restartear el timer?')) {
         this.now = new Date();
-        db.doc('/game-states/code-nod/').update({endTime: addHours(1, this.now)});
+        this.$firestoreRefs.gameState.update({endTime: addHours(1, this.now)});
       }
     }
   }

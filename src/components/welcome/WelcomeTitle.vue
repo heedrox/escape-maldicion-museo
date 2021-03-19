@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>Escape de...</p>
-    <h1>La maldición<br />del museo</h1>
-    <a class="start" href="#" @click="$emit('start')">Empezar</a>
+    <p>{{ title.overTitle }}</p>
+    <h1>{{ title.main }}</h1>
+    <a class="start" href="#" @click="$emit('start')">{{ title.start }}</a>
   </div>
 </template>
 <style scoped>
@@ -14,13 +14,15 @@
 
   h1 {
     padding-top: 2vh;
-    font-size: 8em;
+    font-size: 9vw;
     color: rgb(212, 1, 47);
+    width:60vw;
+    margin:auto;
   }
 
   a.start {
     display: block;
-    font-size: 4em;
+    font-size: 5vw;
     color: rgba(212, 1, 47, 0.58);
     text-decoration: underline;
     position: absolute;
@@ -31,6 +33,12 @@
 </style>
 <script>
 export default {
-  name: 'WelcomeTitle'
+  name: 'WelcomeTitle',
+  props: {
+    title: {
+      type: Object,
+      default: null,
+    },
+  },
 }
 </script>

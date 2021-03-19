@@ -1,20 +1,21 @@
 <template>
   <div>
-    <div v-if="gameState.ready" class="all-items">
+    <div v-if="gameState && gameState.ready" class="all-items">
       <div class="items-container">
-        <RoomItem v-for="item in itemsInRoom"
+        <RoomItem v-for="item in visibleItemsInRoom"
                   :key="item.id"
                   :item="item"
                   :is-unlocked="isUnlocked(item.id)"
-                  @selectImage="selectImage($event)"
-                  @toggleLock="adminToggleLock(item.id)"
+                  @select-image="selectImage($event)"
+                  @toggle-lock="adminToggleLock(item.id)"
         />
       </div>
     </div>
-    <div v-if="!gameState.ready" class="waiting">
-      <p>Gracias por venir</p>
-      <p><br /><br /></p>
-      <p>Damián llegará a la hora señalada</p>
+    <div v-if="!gameState || !gameState.ready" class="waiting">
+      <div v-html="readyText"></div>
+      <p v-if="isAdmin()">
+        <input class="start-button" type="button" value="¡COMENZAR!" @click="setReady()">
+      </p>
     </div>
     <SelectedItem v-if="selectedItem"
                   :item="selectedItem"
@@ -50,13 +51,24 @@
     grid-column-gap: 2vw;
     grid-row-gap: 5vh;
   }
+  input.start-button {
+    font-family: 'Arial', serif;
+    font-size: 4vh;
+    margin-top: 15vh;
+    padding: 1vh;
+  }
+  input.start-button:hover {
+    background-color: #a593a7;
+    cursor: pointer;
+  }
 </style>
 <script>
 import SelectedItem from './SelectedItem';
 import RoomItem from './RoomItem';
-import { db } from '../../../config/db';
-import { isAdmin } from '../../../lib/is-admin';
-import { isCorruptedForMe } from '../../../lib/is-corrupted-destinatary';
+import { isAdmin } from '@/lib/is-admin';
+import { imageUrlResolve } from './image-url-resolve';
+import firebaseUtil from '../../../lib/firebase-util';
+
 
 export default {
   name: 'Room',
@@ -85,14 +97,30 @@ export default {
     }
   },
   firestore: {
-    gameState: db.doc('/game-states/code-nod/'),
+    gameState: firebaseUtil.doc('/')
   },
   computed: {
-    itemsInRoom() {
-      return this.gameConfig.items.filter(item => (item.roomId === this.activeRoom));
+    visibleItemsInRoom() {
+      return this.gameConfig.items
+          .filter(item => (item.roomId === this.activeRoom))
+          .filter(item => !item.invisible);
+    },
+    readyText () {
+      return this.gameConfig.readyText
     }
   },
+  watch: {
+    gameState() {
+      this.closeImageIfOpen();
+    },
+  },
   methods: {
+    isAdmin() {
+      return isAdmin();
+    },
+    setReady() {
+      this.$firestoreRefs.gameState.update( { ready: true });
+    },
     adminToggleLock(itemId) {
       if (this.isUnlocked(itemId)) {
         this.gameState.unlockedItems.splice(this.gameState.unlockedItems.indexOf(itemId), 1);
@@ -102,20 +130,34 @@ export default {
       this.$firestoreRefs.gameState.update( { unlockedItems: this.gameState.unlockedItems });
     },
     getUrl(item) {
-      if (item.corrupted && !isAdmin() && isCorruptedForMe(item.destinataries)) {
-        return `${this.publicPath}game/common/corrupted-image.jpg`;
-      }
-      return `${this.publicPath}game/${item.roomId}/${item.image}`
+      return imageUrlResolve(item, this.publicPath, false);
     },
     selectImage(item) {
       this.selectedItem = item;
+      this.sendSelectedEvent();
     },
     hideImage() {
       this.selectedItem = null;
+      this.sendUnselectedEvent();
     },
     isUnlocked(itemId) {
       return this.gameState.unlockedItems.indexOf(itemId) >= 0;
-    }
-  }
+    },
+    closeImageIfOpen() {
+      if (!this.gameState) return;
+      if (!this.selectedItem) return;
+      if (this.gameState.unlockedItems.indexOf(this.selectedItem.id) === -1) {
+        this.selectedItem = null;
+      }
+    },
+    sendSelectedEvent() {
+      const event = new CustomEvent('selected-item');
+      window.document.dispatchEvent(event);
+    },
+    sendUnselectedEvent() {
+      const event = new CustomEvent('unselected-item');
+      window.document.dispatchEvent(event);
+    },
+  },
 }
 </script>

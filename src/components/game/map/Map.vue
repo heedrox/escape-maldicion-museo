@@ -2,13 +2,15 @@
   <div class="room-container">
     <div v-if="isAdmin()" class="adminBox">
       Unlock room:
-      <a href="#" :class="adminGetClassFor(1)" @click.prevent="adminUnlock(1)">1</a>
-      <a href="#" :class="adminGetClassFor(2)" @click.prevent="adminUnlock(2)">2</a>
-      <a href="#" :class="adminGetClassFor(3)" @click.prevent="adminUnlock(3)">3</a>
-      <a href="#" :class="adminGetClassFor(4)" @click.prevent="adminUnlock(4)">4</a>
-      <a href="#" :class="adminGetClassFor(5)" @click.prevent="adminUnlock(5)">5</a>
-      <a href="#" :class="adminGetClassFor(6)" @click.prevent="adminUnlock(6)">6</a>
-      <a href="#" :class="adminGetClassFor(7)" @click.prevent="adminUnlock(7)">7</a>
+      <a v-if="existsRoom(1)" href="#" :class="adminGetClassFor(1)" @click.prevent="adminUnlock(1)">1</a>
+      <a v-if="existsRoom(2)" href="#" :class="adminGetClassFor(2)" @click.prevent="adminUnlock(2)">2</a>
+      <a v-if="existsRoom(3)" href="#" :class="adminGetClassFor(3)" @click.prevent="adminUnlock(3)">3</a>
+      <a v-if="existsRoom(4)" href="#" :class="adminGetClassFor(4)" @click.prevent="adminUnlock(4)">4</a>
+      <a v-if="existsRoom(5)" href="#" :class="adminGetClassFor(5)" @click.prevent="adminUnlock(5)">5</a>
+      <a v-if="existsRoom(6)" href="#" :class="adminGetClassFor(6)" @click.prevent="adminUnlock(6)">6</a>
+      <a v-if="existsRoom(7)" href="#" :class="adminGetClassFor(7)" @click.prevent="adminUnlock(7)">7</a>
+      <a v-if="existsRoom(8)" href="#" :class="adminGetClassFor(8)" @click.prevent="adminUnlock(8)">8</a>
+      <a v-if="existsRoom(9)" href="#" :class="adminGetClassFor(9)" @click.prevent="adminUnlock(9)">9</a>
     </div>
     <div class="separator"></div>
     <div class="separator"></div>
@@ -43,20 +45,21 @@
     <div class="separator"></div>
 
     <div class="separator"></div>
-    <div class="separator" :class="getClassForSeparator('vertical', 4,7)"></div>
     <div class="separator"></div>
     <div class="separator"></div>
+    <div class="separator" :class="getClassForSeparator('vertical', 5,8)"></div>
     <div class="separator"></div>
-    <div class="separator" :class="getClassForSeparator('vertical', 6,8)"></div>
+    <div class="separator" :class="getClassForSeparator('vertical', 6,9)"></div>
     <div class="separator"></div>
-
 
     <div class="separator"></div>
     <div class="room box room7" :class="getClassForRoom(7)" @click="changeRoom(7)"></div>
+    <div class="separator" :class="getClassForSeparator('horizontal', 7,8)"></div>
+    <div class="room box room8" :class="getClassForRoom(8)" @click="changeRoom(8)"></div>
     <div class="separator"></div>
+    <div class="room box room9" :class="getClassForRoom(9)" @click="changeRoom(9)"></div>
     <div class="separator"></div>
-    <div class="separator"></div>
-    <div class="separator"></div>
+
 
     <div class="separator"></div>
     <div class="separator"></div>
@@ -68,26 +71,30 @@
   </div>
 </template>
 <script>
-import { isAdmin } from '../../../lib/is-admin';
-import { db } from '../../../config/db';
+import { isAdmin } from '@/lib/is-admin';
+import firebaseUtil from '../../../lib/firebase-util';
+import gameConfigFactory from '@/lib/game-config-factory';
+
+const gameConfig = gameConfigFactory.get();
 
 export default {
   name: 'Map',
   props: {
     activeRoom: {
       type: Number,
-      default: 5,
+      default: 2,
     }
   },
+  emits: ['change-room'],
   data() {
     return {
       mapState: {
         unlockedRooms: [],
-      }
+      },
     };
   },
   firestore: {
-    mapState: db.doc('/game-states/code-nod/'),
+    mapState: firebaseUtil.doc('/'),
   },
   methods: {
     isAdmin() {
@@ -109,7 +116,7 @@ export default {
     },
     changeRoom(room) {
       if (this.isUnlocked(room)) {
-        this.$emit('changeRoom', room);
+        this.$emit('change-room', room);
       }
     },
     getClassForRoom(room) {
@@ -125,12 +132,16 @@ export default {
       };
     },
     isUnlocked(room) {
+      if (this.mapState === null) return false;
       return this.mapState.unlockedRooms.indexOf(room) >= 0;
+    },
+    existsRoom(room) {
+      return gameConfig.availableRooms.indexOf(room) >= 0;
     }
   }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
   .adminBox {
     position: absolute;
     font-size: 1.5em;
@@ -169,7 +180,7 @@ export default {
   }
 
   .room.active {
-    border: solid 1vh rgb(212, 1, 47);
+    border: solid 1vh $primary-color;
   }
 
   .separator {
