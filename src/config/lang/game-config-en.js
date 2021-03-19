@@ -27,6 +27,7 @@ const localizedConfig = {
   },
   items: {
     504: { image: '4-q-o-hint-en.jpg' },
+    501: { image: '1-book-on-table-en.jpg' },
   }
 }
 
