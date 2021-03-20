@@ -32,7 +32,7 @@ const localizedConfig = {
     504: { image: '4-q-o-hint-en.jpg' },
     501: { image: '1-book-on-table-en.jpg' },
     605: { image: 'pergamino-maldicion-en.jpg' },
-
+    703: { image: 'movie-maldicion-en.mp4' }
   }
 }
 
