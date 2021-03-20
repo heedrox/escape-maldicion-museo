@@ -6,6 +6,7 @@ const aCorruptedItem = (id, roomId, image, destinataries, type = '') =>
   ({ id, roomId, image, destinataries, type, corrupted: true });
 const anInvisibleItem = (id, roomId, image, type = '') =>
   ({ id, roomId, image, type, corrupted: false, invisible: true });
+const byNumberDestinataries = (ifTwo, ifThree, ifFour) => ({ ifTwo, ifThree, ifFour });
 
 export default {
   availableRooms: [1, 2, 3, 4, 5, 6, 7],
@@ -31,9 +32,9 @@ export default {
   ],
   items: [
     anItem(101, 1, 'movie-tv.mp4', 'VIDEO'),
-    aCorruptedItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg', [1]),
+    aCorruptedItem(102, 1, 'cuadro-leopoldo-archiduque-pinturas.jpg', byNumberDestinataries([1], [1], [1])),
     anItem(104, 1, 'safe-box-in-1.jpg'),
-    aCorruptedItem(105, 1, 'elmo-1.jpg', [1]),
+    aCorruptedItem(105, 1, 'elmo-1.jpg', byNumberDestinataries([1],[1],[1])),
 
     anItem(203, 2, 'library.jpg'),
     anItem(201, 2, 'book-catalog.jpg'),
@@ -41,7 +42,7 @@ export default {
     anItem(205, 2, 'door-to-egypt.jpg'),
     anItem(204, 2, 'lock-to-3.jpg'),
     anItem(202, 2, 'book-disney.jpg'),
-    aCorruptedItem(210, 2, 'elmo-3.jpg', [1]),
+    aCorruptedItem(210, 2, 'elmo-3.jpg', byNumberDestinataries([1],[1],[1])),
 
     anItem(301, 3, 'pasillo.jpg'),
     anItem(311, 3, 'pergamino-pasillo.jpg'),
@@ -66,15 +67,15 @@ export default {
     anItem(507, 5, '7-safe-lock-tiburon.jpg'),
     anItem(502, 5, '2-door-to-dimension.jpg'),
     anItem(505, 5, '5-lock-door-dimension.jpg'),
-    aCorruptedItem(508, 5, '8-elmo-2.jpg', [1]),
+    aCorruptedItem(508, 5, '8-elmo-2.jpg', byNumberDestinataries([1],[1],[1])),
     anInvisibleItem(590, 5, 'clock-start.mp3', 'MP3'),
 
     anItem(600, 6, 'room.jpg'),
     anItem(604, 6, 'more-room.jpg'),
-    aCorruptedItem(602, 6, 'pergamino-cuadros.jpg', [2]),
+    aCorruptedItem(602, 6, 'pergamino-cuadros.jpg', byNumberDestinataries([2],[2],[2])),
     anItem(605, 6, 'pergamino-maldicion.jpg'),
 
-    aCorruptedItem(704, 7, 'felpudo.jpg', [2]),
+    aCorruptedItem(704, 7, 'felpudo.jpg', byNumberDestinataries([2],[2],[2])),
     anItem(705, 7, 'basement.jpg'),
     anItem(702, 7, 'videocamara-yesbatt.jpg'),
     anItem(703, 7, 'movie-maldicion.mp4', 'VIDEO'),

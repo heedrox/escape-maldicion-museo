@@ -2,10 +2,17 @@ import { isAdmin } from '@/lib/is-admin';
 import { isVisibleForMe } from '@/lib/is-visible-destinatary';
 import { getPlayerNumber } from '@/lib/get-player-number';
 import { getNumberPlayers } from '@/lib/get-number-players';
+import { getLanguage } from '@/lib/get-language';
+
+const CORRUPTED_IMAGE = {
+  'es': 'corrupted-image.jpg',
+  'en': 'corrupted-image-en.jpg',
+};
 
 export const imageUrlResolve = (item, publicPath, isThumbnail) => {
   if (item.corrupted && !isAdmin() && isVisibleForMe(item.destinataries)) {
-    return `${publicPath}game/common/corrupted-image.jpg`;
+    const corruptedImage = CORRUPTED_IMAGE[getLanguage()];
+    return `${publicPath}game/common/${corruptedImage}`;
   }
   if (item.different) {
     return isVisibleForMe(item.destinataries) ?
