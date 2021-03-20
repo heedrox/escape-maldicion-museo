@@ -27,6 +27,7 @@ const localizedConfig = {
   },
   items: {
     201: { image: 'book-catalog-en.jpg' },
+    309: { image: 'the-end-en.mp4' },
     311: { image: 'pergamino-pasillo-en.png' },
     390: { image: 'damian-en.mp3' },
     504: { image: '4-q-o-hint-en.jpg' },
