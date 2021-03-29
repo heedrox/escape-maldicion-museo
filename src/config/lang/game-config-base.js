@@ -17,18 +17,14 @@ export default {
   codes: [
     '0000', //to test
     'SPIG', //Qs and Os
-    '563403408', // poligonos cuadros
     '5703681924', // Tiburon
-    'C4QN8', //cuadros archiduque
+    'C4QN8', //cuadros
     '14396', //LEARN - Disney
     'EBGFA', //PIANO
-    'OGALU', //runas
     '86204', //arana escarabajo ...
     '9454', //vela, ojo, constelacion, serpiente
     '9458', //vela, ojo, constelacion, serpiente
     'ELMOMO',
-    'ELMOWOW',
-    'OEMECWE',
   ],
   items: [
     anItem(101, 1, 'movie-tv.mp4', 'VIDEO'),
@@ -60,7 +56,6 @@ export default {
     anItem(407, 4, 'frame-tiburon.jpg'),
     anItem(404, 4, 'piano.jpg', 'PIANO'),
     anItem(405, 4, 'door.jpg'),
-    anItem(408, 4, 'battery.jpg'),
 
     anItem(504, 5, '4-q-o-hint.jpg'),
     anItem(501, 5, '1-book-on-table.jpg'),
