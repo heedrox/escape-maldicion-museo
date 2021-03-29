@@ -1,8 +1,9 @@
 <template>
   <div>
     <p>{{ minutes }}:{{ seconds }}</p>
-    <p v-if="isAdmin()" class="adminbox" @click="pressStart()">
-      Restart
+    <p v-if="isAdmin()" class="adminbox">
+      <span @click="pressStart()">Restart</span> <br>
+      <span @click="pressClear()">Clear</span>
     </p>
   </div>
 </template>
@@ -81,6 +82,11 @@ export default {
       if (window.confirm('Quieres restartear el timer?')) {
         this.now = new Date();
         this.$firestoreRefs.gameState.update({endTime: addHours(1, this.now)});
+      }
+    },
+    pressClear() {
+      if (window.confirm('Quieres borrar el timer?')) {
+        this.$firestoreRefs.gameState.update({endTime: null});
       }
     }
   }
