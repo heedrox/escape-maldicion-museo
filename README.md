@@ -1,4 +1,8 @@
-# escape-museo
+# Escape from The Museum
+
+An escape room from escapes-online.com.
+
+Ask them to host you a session!
 
 ## Project setup
 ```
