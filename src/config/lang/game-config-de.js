@@ -26,14 +26,14 @@ const localizedConfig = {
     placeholder: 'CODE EINTIPPEN'
   },
   items: {
-    201: { image: 'book-catalog-en.jpg' },
+    201: { image: 'book-catalog-de.jpg' },
     309: { image: 'the-end-en.mp4' },
-    311: { image: 'pergamino-pasillo-en.png' },
+    311: { image: 'pergamino-pasillo-de.png' },
     390: { image: 'damian-en.mp3' },
-    504: { image: '4-q-o-hint-en.jpg' },
-    501: { image: '1-book-on-table-en.jpg' },
-    605: { image: 'pergamino-maldicion-en.jpg' },
-    703: { image: 'movie-maldicion-en.mp4' }
+    504: { image: '4-q-o-hint-de.jpg' },
+    501: { image: '1-book-on-table-de.jpg' },
+    605: { image: 'pergamino-maldicion-de.jpg' },
+    703: { image: 'movie-maldicion-de.mp4' }
   }
 }
 
