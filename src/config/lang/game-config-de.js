@@ -8,22 +8,22 @@ const localizedConfig = {
     start: 'STARTEN'
   },
   welcomeText: [
-    'To whom it may concern,<br /><br />',
-    'Dispair has taken over us. Once more, the curse of the museum is back. This time, it took',
-    'for new victims. Everything happened last night, when the church clock struck twelve. <br /><br />',
-    'Your adventures and your intelligence have reached our ears. In a humble way, we ask for you help. ',
-    'We beg you to help us, to join me in the adventure of entering into the museum, investigating the ',
-    'strange happenings that take place there, and freeing us, once for all, from this condemnation that',
-    'harasses us.<br /><br />',
-    'Yours sincerely,.'
+    'Wen es betrifft,<br /><br />',
+    'Es its wieder so weit. Die Fluch des Museums ist zurück, aber dieses mal gibt es ein ' +
+    'Opfer. Alles geschah letzte Nacht, als die Kirchenuhr zwölf Uhr schlug. <br /><br />',
+    'Deine Abenteuerlust und Intelligenz haben unsere Ohren erreicht. Wir bitten dich, uns zu ' +
+    'helfen, und mit uns das Abenteuer zu betreten, in das Museum rein zu gehen, die ' +
+    'seltsamen Ereignisse dort zu untersuchen und uns ein Mal für alle mal von diesem Fluch ' +
+    'zu befreien.<br /><br />',
+    'LG,'
   ].join(' '),
   readyText: [
-    '<p>Thanks for coming</p>',
+    '<p>Danke fürs Kommen</p>',
     '<p><br /><br /></p>',
-    '<p>Damian will be here at the appointed time</p>'
+    '<p>Warten Sie auf die festgelegte Zeit</p>'
   ].join(' '),
   keyboard: {
-    placeholder: 'TYPE A CODE'
+    placeholder: 'CODE EINTIPPEN'
   },
   items: {
     201: { image: 'book-catalog-en.jpg' },
